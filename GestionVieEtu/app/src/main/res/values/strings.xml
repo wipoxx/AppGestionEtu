@@ -8,8 +8,8 @@
     <string name="bSorties">Sorties</string>
 
     <!-- Etudes -->
-    <string name="bProjet">Ajouter la date d\'un devoir à rendre</string>
-    <string name="bExamen">Ajouter la date d\'un examen</string>
-    <string name="bRappel">Ajouter un rappel</string>
+    <string name="bEDT">Gérer son emploi du temps</string>
+    <string name="bRevisions">Planifier ses révisions</string>
+    <string name="bNotes">Gérer ses notes</string>
 
 </resources>

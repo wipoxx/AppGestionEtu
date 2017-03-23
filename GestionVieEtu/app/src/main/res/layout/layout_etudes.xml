@@ -22,27 +22,28 @@
 
 
     <Button
-        android:id="@+id/ajouterExamen"
+        android:id="@+id/gererEDT"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:text="@string/bExamen"
+        android:layout_weight="4"
+        android:text="@string/bEDT"
+        android:textSize="@dimen/textSizeMain"
+        android:onClick="afficherBoutonsAgenda"/>
+
+    <Button
+        android:id="@+id/planifierRevisions"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:text="@string/bRevisions"
         android:textSize="@dimen/textSizeMain"/>
 
     <Button
-        android:id="@+id/ajouterProjet"
+        android:id="@+id/gererNotes"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:text="@string/bProjet"
-        android:textSize="@dimen/textSizeMain"/>
-
-    <Button
-        android:id="@+id/ajouterRappel"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="3"
-        android:text="@string/bRappel"
+        android:layout_weight="4"
+        android:text="@string/bNotes"
         android:textSize="@dimen/textSizeMain"/>
 
 </LinearLayout>

@@ -1,14 +1,19 @@
 package uqac.gestionvieetu;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewParent;
+import android.widget.Button;
+import android.widget.LinearLayout;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //Lors d'un clic sur le bouton Etudes dans la première fenêtre
     public void afficherLayoutEtudes(View view) {
         FragmentTransaction fragTrans = getSupportFragmentManager().beginTransaction();
 
@@ -51,5 +57,21 @@ public class MainActivity extends AppCompatActivity {
         fragTrans.replace(android.R.id.content, etudesFragment);
         fragTrans.addToBackStack(null);
         fragTrans.commit();
+    }
+
+    //Lors d'un clic sur le bouton Gérer EDT dans les Etudes
+    public void afficherBoutonsAgenda(View view) {
+
+        LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View viewLayout =  layoutInflater.inflate(R.layout.layout_etudes, null);
+        LinearLayout linearLayout =  (LinearLayout) viewLayout.findViewById(R.id.layout_etudes);
+
+        //LinearLayout linearLayout = (LinearLayout) layoutInflater.inflate(R.layout.layout_etudes, null);
+
+        linearLayout.removeAllViewsInLayout();
+        linearLayout.removeView(findViewById(R.id.gererEDT));
+        linearLayout.removeView(findViewById(R.id.gererNotes));
+        linearLayout.removeView(findViewById(R.id.planifierRevisions));
+
     }
 }
