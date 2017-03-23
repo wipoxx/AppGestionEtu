@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">GestionVieEtu</string>
+    <string name="action_settings">Settings</string>
+
+    <!-- Main -->
+    <string name="bBudget">Budget</string>
+    <string name="bEtudes">Etudes</string>
+    <string name="bSorties">Sorties</string>
+
+    <!-- Etudes -->
+    <string name="bProjet">Ajouter la date d\'un devoir à rendre</string>
+    <string name="bExamen">Ajouter la date d\'un examen</string>
+    <string name="bRappel">Ajouter un rappel</string>
+
+</resources>
