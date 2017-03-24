@@ -74,4 +74,15 @@ public class MainActivity extends AppCompatActivity {
         linearLayout.removeView(findViewById(R.id.planifierRevisions));
 
     }
+
+    //Lors d'un clic sur le bouton Budget dans la première fenêtre
+    public void afficherLayoutBudget(View view) {
+        FragmentTransaction fragTrans = getSupportFragmentManager().beginTransaction();
+
+        Fragment budgetFragment = new BudgetFragment();
+
+        fragTrans.replace(android.R.id.content, budgetFragment);
+        fragTrans.addToBackStack(null);
+        fragTrans.commit();
+    }
 }
