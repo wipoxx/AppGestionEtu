@@ -54,13 +54,13 @@ public class MainActivity extends AppCompatActivity {
 
         Fragment etudesFragment = new EtudesFragment();
 
-        fragTrans.replace(android.R.id.content, etudesFragment);
+        fragTrans.replace(R.id.fragment_main, etudesFragment);
         fragTrans.addToBackStack(null);
         fragTrans.commit();
     }
 
     //Lors d'un clic sur le bouton Gérer EDT dans les Etudes
-    public void afficherBoutonsAgenda(View view) {
+    /*public void afficherBoutonsAgenda(View view) {
 
         LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View viewLayout =  layoutInflater.inflate(R.layout.layout_etudes, null);
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
         linearLayout.removeView(findViewById(R.id.gererNotes));
         linearLayout.removeView(findViewById(R.id.planifierRevisions));
 
-    }
+    }*/
 
     //Lors d'un clic sur le bouton Budget dans la première fenêtre
     public void afficherLayoutBudget(View view) {
@@ -81,7 +81,8 @@ public class MainActivity extends AppCompatActivity {
 
         Fragment budgetFragment = new BudgetFragment();
 
-        fragTrans.replace(android.R.id.content, budgetFragment);
+
+        fragTrans.replace(R.id.fragment_main, budgetFragment);
         fragTrans.addToBackStack(null);
         fragTrans.commit();
     }
