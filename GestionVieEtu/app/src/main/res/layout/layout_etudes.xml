@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
@@ -26,9 +25,9 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="4"
+        android:onClick="afficherBoutonsAgenda"
         android:text="@string/bEDT"
-        android:textSize="@dimen/textSizeMain"
-        android:onClick="afficherBoutonsAgenda"/>
+        android:textSize="@dimen/textSizeMain"/>
 
     <Button
         android:id="@+id/planifierRevisions"
