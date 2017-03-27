@@ -8,37 +8,29 @@
     android:orientation="vertical"
     tools:context="uqac.gestionvieetu.MainActivity">
 
-    <CalendarView
-        android:id="@+id/calendrier"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="2"
-        />
-
-
     <Button
-        android:id="@+id/gererEDT"
+        android:id="@+id/AjouterHoraire"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="4"
-        android:onClick="afficherBoutonsAgenda"
-        android:text="@string/bEDT"
+        android:onClick="ajoutHoraire"
+        android:text="@string/bHoraire"
         android:textSize="@dimen/textSizeSmallButton"/>
 
     <Button
-        android:id="@+id/planifierRevisions"
+        android:id="@+id/AjouterAFaire"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="4"
-        android:text="@string/bRevisions"
+        android:text="@string/bAFaire"
         android:textSize="@dimen/textSizeSmallButton"/>
 
     <Button
-        android:id="@+id/gererNotes"
+        android:id="@+id/AjouterExamProjet"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="4"
-        android:text="@string/bNotes"
+        android:text="@string/bExamProjet"
         android:textSize="@dimen/textSizeSmallButton"/>
 
 </LinearLayout>

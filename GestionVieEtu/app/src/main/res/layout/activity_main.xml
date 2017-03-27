@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
@@ -8,26 +9,23 @@
     android:orientation="vertical"
     tools:context="uqac.gestionvieetu.MainActivity">
 
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        android:minHeight="?attr/actionBarSize" />
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-    <RelativeLayout
+
+    <fragment
+        android:id="@+id/fragment_main"
+        android:name="uqac.gestionvieetu.MainFragment"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/toolbar">
-
-        <fragment
-            android:id="@+id/fragment_main"
-            android:name="uqac.gestionvieetu.MainFragment"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            tools:layout="@layout/layout_etudes" />
-
-    </RelativeLayout>
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbar"
+        tools:layout="@layout/layout_etudes" />
 
 
 </RelativeLayout>

@@ -12,4 +12,13 @@
     <string name="bRevisions">Planifier ses révisions</string>
     <string name="bNotes">Gérer ses notes</string>
 
+    <string name="bHoraire">+ Horaire de cours</string>
+    <string name="bAFaire">+ Tâche à réaliser pour un cours</string>
+    <string name="bExamProjet">+ Examen ou projet à rendre</string>
+    
+    <string-array name="matieres_array">
+        <item>truc</item>
+        <item>trrruc</item>
+    </string-array>
+
 </resources>

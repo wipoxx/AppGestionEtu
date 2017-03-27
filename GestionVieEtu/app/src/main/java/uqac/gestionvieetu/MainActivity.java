@@ -1,22 +1,25 @@
 package uqac.gestionvieetu;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewParent;
-import android.widget.Button;
-import android.widget.LinearLayout;
+import android.widget.CalendarView;
+
+import uqac.gestionvieetu.Etudes.AgendaFragment;
+import uqac.gestionvieetu.Etudes.AjoutHoraireFragment;
+import uqac.gestionvieetu.Etudes.EtudesFragment;
 
 public class MainActivity extends AppCompatActivity {
+    private CalendarView calendrier; //Le calendrier commun de l'appli
 
+    //Variables pour afficher l'heure choisie par l'utilisateur dans un bouton
+    private String moment;
+    private View bHeure;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,14 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+    }
+
+    public CalendarView getCalendrier() {
+        return calendrier;
+    }
+
+    public void setCalendrier(CalendarView calendrier) {
+        this.calendrier = calendrier;
     }
 
     @Override
@@ -48,42 +59,53 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    //Lors d'un clic sur le bouton Etudes dans la première fenêtre
+    //Lors d'un clic sur le bouton Etudes dans la première fenêtre ; Affiche le layout études
     public void afficherLayoutEtudes(View view) {
+        this.changerLayout(new EtudesFragment());
+    }
+
+    //Lors d'un clic sur le bouton Gérer EDT dans les Etudes ; Affiche le layout agenda
+    public void afficherBoutonsAgenda(View view) {
+        this.changerLayout(new AgendaFragment());
+
+    }
+
+    //Lors d'un clic sur le bouton Budget dans la première fenêtre
+    public void afficherLayoutBudget(View view) {
+        this.changerLayout(new BudgetFragment());
+    }
+
+    //Lors d'un clic sur le bouton Ajouter horaire ; affiche layout Ajout horaire
+    public void ajoutHoraire(View view) {
+        this.changerLayout(new AjoutHoraireFragment());
+        //getMenuInflater().inflate(R.menu.menu_main, getMen);
+
+    }
+
+    //Permet de mettre le layout contenu dans le fragment en entrée à la place de celui du fragment présent dans activity_main.xml
+    private void changerLayout(Fragment fragment) {
         FragmentTransaction fragTrans = getSupportFragmentManager().beginTransaction();
 
-        Fragment etudesFragment = new EtudesFragment();
-
-        fragTrans.replace(R.id.fragment_main, etudesFragment);
+        fragTrans.replace(R.id.fragment_main, fragment);
         fragTrans.addToBackStack(null);
         fragTrans.commit();
     }
 
-    //Lors d'un clic sur le bouton Gérer EDT dans les Etudes
-    /*public void afficherBoutonsAgenda(View view) {
+    //Affiche le dialogue pour choisir heure+minute
+    public void afficherTimePicker(View view) {
+        TimePickerFragment timePicker = new TimePickerFragment();
+        timePicker.show(getSupportFragmentManager(), "timePicker");
+        bHeure = view;
+    }
 
-        LayoutInflater layoutInflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View viewLayout =  layoutInflater.inflate(R.layout.layout_etudes, null);
-        LinearLayout linearLayout =  (LinearLayout) viewLayout.findViewById(R.id.layout_etudes);
+    //Met l'heure choisie par l'utilisateur dans le texte du bouton
+    public void setMoment(String moment) {
+        Fragment currentFragment = this.getSupportFragmentManager().findFragmentById(R.id.fragment_main);
 
-        //LinearLayout linearLayout = (LinearLayout) layoutInflater.inflate(R.layout.layout_etudes, null);
-
-        linearLayout.removeAllViewsInLayout();
-        linearLayout.removeView(findViewById(R.id.gererEDT));
-        linearLayout.removeView(findViewById(R.id.gererNotes));
-        linearLayout.removeView(findViewById(R.id.planifierRevisions));
-
-    }*/
-
-    //Lors d'un clic sur le bouton Budget dans la première fenêtre
-    public void afficherLayoutBudget(View view) {
-        FragmentTransaction fragTrans = getSupportFragmentManager().beginTransaction();
-
-        Fragment budgetFragment = new BudgetFragment();
-
-
-        fragTrans.replace(R.id.fragment_main, budgetFragment);
-        fragTrans.addToBackStack(null);
-        fragTrans.commit();
+        if (currentFragment instanceof AjoutHoraireFragment) {
+            ((AjoutHoraireFragment) currentFragment).setMoment(moment, bHeure);
+            this.findViewById(R.id.fragment_main).invalidate();
+        }
+        this.moment = moment;
     }
 }
