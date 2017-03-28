@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
     //Variables pour afficher l'heure choisie par l'utilisateur dans un bouton
     private String moment;
     private View bHeure;
+    private View bDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -94,7 +95,7 @@ public class MainActivity extends AppCompatActivity {
     private void changerLayout(Fragment fragment) {
         FragmentTransaction fragTrans = getSupportFragmentManager().beginTransaction();
 
-        fragTrans.replace(R.id.fragment_main, fragment);
+        fragTrans.replace(R.id.main_fragment, fragment);
         fragTrans.addToBackStack(null);
         fragTrans.commit();
     }
@@ -108,11 +109,11 @@ public class MainActivity extends AppCompatActivity {
 
     //Met l'heure choisie par l'utilisateur dans le texte du bouton
     public void setMoment(String moment) {
-        Fragment currentFragment = this.getSupportFragmentManager().findFragmentById(R.id.fragment_main);
+        Fragment currentFragment = this.getSupportFragmentManager().findFragmentById(R.id.main_fragment);
 
         if (currentFragment instanceof AjoutHoraireFragment) {
             ((AjoutHoraireFragment) currentFragment).setMoment(moment, bHeure);
-            this.findViewById(R.id.fragment_main).invalidate();
+            this.findViewById(R.id.main_fragment).invalidate();
         }
 
         else if (currentFragment instanceof AjoutSortieFragment) {
@@ -120,5 +121,11 @@ public class MainActivity extends AppCompatActivity {
             this.findViewById(R.id.fragment_main).invalidate();
         }
         this.moment = moment;
+    }
+
+    public void afficherDatePicker(View view) {
+        DatePickerFragment datePicker = new DatePickerFragment();
+        datePicker.show(getSupportFragmentManager(), "timePicker");
+        bDate = view;
     }
 }
