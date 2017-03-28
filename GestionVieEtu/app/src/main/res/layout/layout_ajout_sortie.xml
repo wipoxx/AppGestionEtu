@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <EditText
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/etTitre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:hint="Titre" />
+
+        <Button
+            android:text="Ajouter"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/button3"
+            android:contextClickable="true"
+            tools:clickable="false"
+            android:clickable="false"
+            android:focusable="false" />
+    </TableRow>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/etLieu"
+        android:hint="Lieu" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="17dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <Switch
+        android:text="Jour Entier"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/jourEntier"
+        android:textSize="18sp" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="17dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <TextView
+        android:text="Horaire"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvHoraire"
+        android:textSize="18sp" />
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
+
+        <TextView
+            android:text="De"
+            android:layout_width="54dp"
+            android:layout_height="match_parent"
+            android:id="@+id/tvHoraireDe" />
+
+        <Button
+            android:text="0:00"
+            android:layout_height="wrap_content"
+            android:id="@+id/bHoraireDe"
+            android:elevation="0dp"
+            android:layout_width="match_parent"
+            android:onClick="afficherTimePicker" />
+    </TableRow>
+
+    <TableRow
+        android:layout_width="match_parent"
+        android:layout_height="37dp"
+        android:layout_weight="0.03">
+
+        <TextView
+            android:text="à"
+            android:layout_height="wrap_content"
+            android:id="@+id/tvHoraireA"
+            android:layout_width="54dp" />
+
+        <Button
+            android:text="0:00"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/bHoraireA"
+            android:onClick="afficherTimePicker" />
+    </TableRow>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="14dp"
+        android:layout_weight="0.01">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/etNote"
+        android:hint="Note" />
+
+</LinearLayout>

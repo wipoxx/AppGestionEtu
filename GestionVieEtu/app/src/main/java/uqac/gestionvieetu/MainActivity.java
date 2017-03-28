@@ -13,6 +13,8 @@ import android.widget.CalendarView;
 import uqac.gestionvieetu.Etudes.AgendaFragment;
 import uqac.gestionvieetu.Etudes.AjoutHoraireFragment;
 import uqac.gestionvieetu.Etudes.EtudesFragment;
+import uqac.gestionvieetu.Sorties.AjoutSortieFragment;
+import uqac.gestionvieetu.Sorties.SortiesFragment;
 
 public class MainActivity extends AppCompatActivity {
     private CalendarView calendrier; //Le calendrier commun de l'appli
@@ -70,6 +72,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void afficherLayoutSorties(View view){this.changerLayout(new SortiesFragment());}
+
     //Lors d'un clic sur le bouton Budget dans la première fenêtre
     public void afficherLayoutBudget(View view) {
         this.changerLayout(new BudgetFragment());
@@ -80,6 +84,10 @@ public class MainActivity extends AppCompatActivity {
         this.changerLayout(new AjoutHoraireFragment());
         //getMenuInflater().inflate(R.menu.menu_main, getMen);
 
+    }
+
+    public void ajoutSortie(View view){
+        this.changerLayout(new AjoutSortieFragment());
     }
 
     //Permet de mettre le layout contenu dans le fragment en entrée à la place de celui du fragment présent dans activity_main.xml
@@ -104,6 +112,11 @@ public class MainActivity extends AppCompatActivity {
 
         if (currentFragment instanceof AjoutHoraireFragment) {
             ((AjoutHoraireFragment) currentFragment).setMoment(moment, bHeure);
+            this.findViewById(R.id.fragment_main).invalidate();
+        }
+
+        else if (currentFragment instanceof AjoutSortieFragment) {
+            ((AjoutSortieFragment) currentFragment).setMoment(moment, bHeure);
             this.findViewById(R.id.fragment_main).invalidate();
         }
         this.moment = moment;

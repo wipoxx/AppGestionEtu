@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:weightSum="1">
+
+    <CalendarView
+        android:layout_width="match_parent"
+        android:layout_height="283dp"
+        android:id="@+id/calendarView"
+        android:layout_weight="0.08" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="17dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
+    <Button
+        android:text="Ajouter une sortie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonAjouter"
+        android:layout_weight="0.14"
+        android:onClick="ajoutSortie" />
+
+    <Button
+        android:text="Modifier une sortie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonModifier"
+        android:layout_weight="0.14" />
+
+    <Button
+        android:text="Supprimer une sortie"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/buttonSupprimer"
+        android:layout_weight="0.14" />
+</LinearLayout>
