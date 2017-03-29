@@ -22,7 +22,7 @@ public class SortiesFragment extends android.support.v4.app.Fragment{
         //Récupère le calendrier et le passe à l'activité
         CalendarView calendarView = (CalendarView) layout_sortie.findViewById(R.id.calendrier);
         MainActivity mainActivity = (MainActivity) getActivity();
-        mainActivity.setCalendrier(calendarView);
+        //mainActivity.setCalendrier(calendarView);
 
         return layout_sortie;
     }

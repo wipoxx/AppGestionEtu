@@ -1,7 +1,5 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_etudes"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
@@ -15,15 +13,16 @@
         android:layout_weight="4"
         android:onClick="ajoutHoraire"
         android:text="@string/bHoraire"
-        android:textSize="@dimen/textSizeSmallButton"/>
+        android:textSize="@dimen/textSizeSmallButton" />
 
     <Button
         android:id="@+id/AjouterAFaire"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_weight="4"
+        android:onClick="ajoutTache"
         android:text="@string/bAFaire"
-        android:textSize="@dimen/textSizeSmallButton"/>
+        android:textSize="@dimen/textSizeSmallButton" />
 
     <Button
         android:id="@+id/AjouterExamProjet"
@@ -31,6 +30,6 @@
         android:layout_height="match_parent"
         android:layout_weight="4"
         android:text="@string/bExamProjet"
-        android:textSize="@dimen/textSizeSmallButton"/>
+        android:textSize="@dimen/textSizeSmallButton" />
 
 </LinearLayout>

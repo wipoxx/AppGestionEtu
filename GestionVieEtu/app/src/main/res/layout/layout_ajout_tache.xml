@@ -1,0 +1,62 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout_etudes"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    tools:context="uqac.gestionvieetu.MainActivity">
+
+    <Spinner
+        android:id="@+id/sMatiere"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSizeMediumButton" />
+
+    <EditText
+        android:id="@+id/etTitreTache"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Titre"
+        android:textSize="@dimen/textSizeMediumButton" />
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Pour le cours du : "
+        android:textSize="@dimen/textSizeMediumButton" />
+
+    <Button
+        android:id="@+id/bDateTache"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="afficherDatePicker"
+        android:textSize="@dimen/textSizeMediumButton" />
+
+
+    <EditText
+        android:id="@+id/etEnonceTache"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Énoncé, à faire, ..."
+        android:layout_weight="1"
+        android:layout_gravity="bottom"
+        android:textSize="@dimen/textSizeMediumButton" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/bAjouterFichier"
+        android:textSize="@dimen/textSizeMediumButton"
+        android:text="+ Fichier"/>
+
+    <Button
+        android:id="@+id/bEnregistrerTache"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enregistrer"
+        android:textSize="@dimen/textSizeMediumButton" />
+
+
+</LinearLayout>

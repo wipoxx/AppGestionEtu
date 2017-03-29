@@ -10,8 +10,10 @@ import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.CalendarView;
 
+import uqac.gestionvieetu.Etudes.AjoutTacheFragment;
 import uqac.gestionvieetu.Etudes.EdtFragment;
 import uqac.gestionvieetu.Etudes.AjoutHoraireFragment;
 import uqac.gestionvieetu.Etudes.EtudesFragment;
@@ -23,7 +25,6 @@ public class MainActivity extends AppCompatActivity {
     private CalendarView calendrier; //Le calendrier commun de l'appli
 
     //Variables pour afficher l'heure choisie par l'utilisateur dans un bouton
-    private String moment;
     private String dateSelectionnee;
     private View bHeure;
     private View bDate;
@@ -34,14 +35,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-    }
-
-    public CalendarView getCalendrier() {
-        return calendrier;
-    }
-
-    public void setCalendrier(CalendarView calendrier) {
-        this.calendrier = calendrier;
     }
 
     @Override
@@ -88,8 +81,11 @@ public class MainActivity extends AppCompatActivity {
 
     //Lors d'un clic sur le bouton Ajouter horaire ; affiche layout Ajout horaire
     public void ajoutHoraire(View view) {
-        Fragment fragment = new AjoutHoraireFragment();
-        this.changerLayout(fragment);
+        this.changerLayout(new AjoutHoraireFragment());
+    }
+
+    public void ajoutTache(View view) {
+        this.changerLayout(new AjoutTacheFragment());
     }
 
     public void ajoutSortie(View view) {
@@ -123,12 +119,10 @@ public class MainActivity extends AppCompatActivity {
 
         if (currentFragment instanceof AjoutHoraireFragment) {
             ((AjoutHoraireFragment) currentFragment).setMoment(moment, bHeure);
-            this.findViewById(R.id.main_fragment).invalidate();
         } else if (currentFragment instanceof AjoutSortieFragment) {
             ((AjoutSortieFragment) currentFragment).setMoment(moment, bHeure);
-            this.findViewById(R.id.main_fragment).invalidate();
         }
-        this.moment = moment;
+        this.findViewById(R.id.main_fragment).invalidate();
     }
 
     public void afficherDatePicker(View view) {
@@ -143,20 +137,36 @@ public class MainActivity extends AppCompatActivity {
     public void onBackPressed() {
         Fragment currentFragment = this.getSupportFragmentManager().findFragmentById(R.id.main_fragment);
 
-        if (currentFragment instanceof AjoutHoraireFragment) {
+        if (currentFragment instanceof AjoutHoraireFragment || currentFragment instanceof AjoutTacheFragment) {
             this.changerLayout(new EtudesFragment());
             this.changerLayout(new EdtFragment(), R.id.sous_etudes_fragment);
-        }
-        else if (currentFragment instanceof EtudesFragment) {
+        } else if (currentFragment instanceof EtudesFragment) {
             Fragment currentFragment2 = this.getSupportFragmentManager().findFragmentById(R.id.sous_etudes_fragment);
-            if(currentFragment2 instanceof EdtFragment) {
+            if (currentFragment2 instanceof EdtFragment) {
                 this.changerLayout(new RootEtudesFragment(), R.id.sous_etudes_fragment);
             } else {
                 this.changerLayout(new MainFragment());
             }
-        }
-        else {
+        } else {
             super.onBackPressed();
         }
     }
+
+    public String getDateSelectionnee() {
+        return dateSelectionnee;
+    }
+
+    public void setDateSelectionnee(String dateSelectionnee) {
+        this.dateSelectionnee = dateSelectionnee;
+        Fragment currentFragment = this.getSupportFragmentManager().findFragmentById(R.id.main_fragment);
+
+        if (currentFragment instanceof AjoutHoraireFragment) {
+            ((AjoutHoraireFragment) currentFragment).setDate(dateSelectionnee, bDate);
+        } else if (currentFragment instanceof AjoutTacheFragment) {
+            ((AjoutTacheFragment) currentFragment).setDate(dateSelectionnee, bDate);
+        }
+    }
+
 }
+
+

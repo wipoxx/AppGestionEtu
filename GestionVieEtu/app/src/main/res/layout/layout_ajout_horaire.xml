@@ -1,6 +1,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/layout_etudes"
+    android:id="@+id/layout_ajout_horaire"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#FFFFFF"
@@ -34,12 +34,11 @@
                 android:textSize="@dimen/textSizeMediumButton" />
 
             <Button
-                android:id="@+id/date"
+                android:id="@+id/bDateEdt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:onClick="afficherDatePicker"
-                android:text="0:00"
                 android:textSize="@dimen/textSizeMediumButton" />
         </TableRow>
 
@@ -53,7 +52,7 @@
                 android:textSize="@dimen/textSizeMediumButton" />
 
             <Button
-                android:id="@+id/heureDebut"
+                android:id="@+id/bHeureDebutEdt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -72,7 +71,7 @@
                 android:textSize="@dimen/textSizeMediumButton" />
 
             <Button
-                android:id="@+id/heureFin"
+                android:id="@+id/bHeureFinEdt"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
@@ -83,21 +82,21 @@
     </TableLayout>
 
     <EditText
-        android:id="@+id/etLieu"
+        android:id="@+id/etLieuEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Lieu"
         android:textSize="@dimen/textSizeMediumButton" />
 
     <EditText
-        android:id="@+id/etNote"
+        android:id="@+id/etNoteEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Note, détail, ..."
         android:textSize="@dimen/textSizeMediumButton" />
 
     <Button
-        android:id="@+id/bEnregistrer"
+        android:id="@+id/bEnregistrerEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Enregistrer"

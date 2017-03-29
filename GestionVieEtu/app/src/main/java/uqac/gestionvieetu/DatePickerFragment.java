@@ -19,26 +19,34 @@ public class DatePickerFragment extends DialogFragment implements DatePickerDial
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
         //Récupérer la date choisie dans le calendrier comme valeur par défaut
-        final CalendarView c = ((MainActivity) getActivity()).getCalendrier();
-        SimpleDateFormat format = new SimpleDateFormat("dd/MM/YYYY");
-        String dateFormatee = format.format(c.getDate());
+        String dateSelectionnee = ((MainActivity) getActivity()).getDateSelectionnee();
+        int jour = Integer.parseInt(dateSelectionnee.substring(0, 2));
+        int mois = Integer.parseInt(dateSelectionnee.substring(3, 5));
+        int annee = Integer.parseInt(dateSelectionnee.substring(6, 10));
 
-        Log.d("Date:Date", dateFormatee);
-        Log.d("Date:Jour", dateFormatee.substring(0, 2));
-        Log.d("Date:Mois", dateFormatee.substring(3, 5));
-        Log.d("Date:Annee", dateFormatee.substring(6, 10));
-
-      //  int jour = Integer.getInteger(dateFormatee.substring(0, 2));
-        //int mois = Integer.getInteger(dateFormatee.substring(3, 5));
-        //int annee = Integer.getInteger(dateFormatee.substring(6, 10));
 
         //Créer une nouvelle instance du DatePicker et la retourner
-        return new DatePickerDialog(getActivity());
-        //return new DatePickerDialog(getActivity(), this, jour, mois, annee);
+        return new DatePickerDialog(getActivity(), this, annee, --mois, jour);
     }
 
     @Override
     public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
 
+        MainActivity mainActivity = (MainActivity) getActivity();
+        String date = "";
+
+        //Si le jour est < 10
+        if (dayOfMonth < 10) {
+            date += "0";
+        }
+
+        date += dayOfMonth + "/";
+
+        //Affiche le 0 avant le mois si entre 0 et 9
+        if (month < 10) {
+            date += "0";
+        }
+        date += (++month) + "/" + year;
+        mainActivity.setDateSelectionnee(date);
     }
 }

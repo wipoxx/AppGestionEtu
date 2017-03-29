@@ -33,7 +33,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/etLieu"
+        android:id="@+id/etLieuEdt"
         android:hint="Lieu" />
 
     <ScrollView
@@ -124,7 +124,7 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/etNote"
+        android:id="@+id/etNoteEdt"
         android:hint="Note" />
 
 </LinearLayout>
