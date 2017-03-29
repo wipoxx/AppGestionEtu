@@ -3,6 +3,7 @@ package uqac.gestionvieetu.Etudes;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,7 +22,6 @@ public class AjoutHoraireFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         LinearLayout layout_horaire = (LinearLayout) inflater.inflate(R.layout.layout_ajout_horaire, container, false);
 
-
         //Pour le texte du spinner
         Spinner sMatiere = (Spinner) layout_horaire.findViewById(R.id.sMatiere);
         // Create an ArrayAdapter using the string array and a default spinner layout
@@ -34,10 +34,10 @@ public class AjoutHoraireFragment extends Fragment {
         return layout_horaire;
     }
 
+
     //Met l'heure et les minutes dans le texte du bouton
     public void setMoment(String moment, View view) {
         Button b = (Button) view;
         b.setText(moment);
-
     }
 }

@@ -1,18 +1,21 @@
 package uqac.gestionvieetu;
 
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CalendarView;
 
-import uqac.gestionvieetu.Etudes.AgendaFragment;
+import uqac.gestionvieetu.Etudes.EdtFragment;
 import uqac.gestionvieetu.Etudes.AjoutHoraireFragment;
 import uqac.gestionvieetu.Etudes.EtudesFragment;
+import uqac.gestionvieetu.Etudes.RootEtudesFragment;
 import uqac.gestionvieetu.Sorties.AjoutSortieFragment;
 import uqac.gestionvieetu.Sorties.SortiesFragment;
 
@@ -21,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
 
     //Variables pour afficher l'heure choisie par l'utilisateur dans un bouton
     private String moment;
+    private String dateSelectionnee;
     private View bHeure;
     private View bDate;
 
@@ -68,12 +72,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //Lors d'un clic sur le bouton Gérer EDT dans les Etudes ; Affiche le layout agenda
-    public void afficherBoutonsAgenda(View view) {
-        this.changerLayout(new AgendaFragment());
+    public void afficherLayoutEdt(View view) {
+        this.changerLayout(new EdtFragment(), R.id.sous_etudes_fragment);
 
     }
 
-    public void afficherLayoutSorties(View view){this.changerLayout(new SortiesFragment());}
+    public void afficherLayoutSorties(View view) {
+        this.changerLayout(new SortiesFragment());
+    }
 
     //Lors d'un clic sur le bouton Budget dans la première fenêtre
     public void afficherLayoutBudget(View view) {
@@ -82,21 +88,25 @@ public class MainActivity extends AppCompatActivity {
 
     //Lors d'un clic sur le bouton Ajouter horaire ; affiche layout Ajout horaire
     public void ajoutHoraire(View view) {
-        this.changerLayout(new AjoutHoraireFragment());
-        //getMenuInflater().inflate(R.menu.menu_main, getMen);
-
+        Fragment fragment = new AjoutHoraireFragment();
+        this.changerLayout(fragment);
     }
 
-    public void ajoutSortie(View view){
+    public void ajoutSortie(View view) {
         this.changerLayout(new AjoutSortieFragment());
     }
 
-    //Permet de mettre le layout contenu dans le fragment en entrée à la place de celui du fragment présent dans activity_main.xml
-    private void changerLayout(Fragment fragment) {
+    //Place le fragment en entrée dans le main_fragment (et donc change la vue à afficher)
+    public void changerLayout(Fragment fragment) {
+        changerLayout(fragment, R.id.main_fragment);
+    }
+
+    //Place le fragment en entrée dans le fragment en entrée (utile pour remplacer le fragment dans le layout_etudes
+    public void changerLayout(Fragment fragment, int idFragment) {
         FragmentTransaction fragTrans = getSupportFragmentManager().beginTransaction();
 
-        fragTrans.replace(R.id.main_fragment, fragment);
-        fragTrans.addToBackStack(null);
+        fragTrans.replace(idFragment, fragment);
+        fragTrans.addToBackStack(fragment.getClass().getName());
         fragTrans.commit();
     }
 
@@ -114,11 +124,9 @@ public class MainActivity extends AppCompatActivity {
         if (currentFragment instanceof AjoutHoraireFragment) {
             ((AjoutHoraireFragment) currentFragment).setMoment(moment, bHeure);
             this.findViewById(R.id.main_fragment).invalidate();
-        }
-
-        else if (currentFragment instanceof AjoutSortieFragment) {
+        } else if (currentFragment instanceof AjoutSortieFragment) {
             ((AjoutSortieFragment) currentFragment).setMoment(moment, bHeure);
-            this.findViewById(R.id.fragment_main).invalidate();
+            this.findViewById(R.id.main_fragment).invalidate();
         }
         this.moment = moment;
     }
@@ -127,5 +135,28 @@ public class MainActivity extends AppCompatActivity {
         DatePickerFragment datePicker = new DatePickerFragment();
         datePicker.show(getSupportFragmentManager(), "timePicker");
         bDate = view;
+    }
+
+    //Pour permettre de retourner à l'affichage précédent dans la partie Etudes
+    //Sinon bug à cause des différents fragments
+    @Override
+    public void onBackPressed() {
+        Fragment currentFragment = this.getSupportFragmentManager().findFragmentById(R.id.main_fragment);
+
+        if (currentFragment instanceof AjoutHoraireFragment) {
+            this.changerLayout(new EtudesFragment());
+            this.changerLayout(new EdtFragment(), R.id.sous_etudes_fragment);
+        }
+        else if (currentFragment instanceof EtudesFragment) {
+            Fragment currentFragment2 = this.getSupportFragmentManager().findFragmentById(R.id.sous_etudes_fragment);
+            if(currentFragment2 instanceof EdtFragment) {
+                this.changerLayout(new RootEtudesFragment(), R.id.sous_etudes_fragment);
+            } else {
+                this.changerLayout(new MainFragment());
+            }
+        }
+        else {
+            super.onBackPressed();
+        }
     }
 }

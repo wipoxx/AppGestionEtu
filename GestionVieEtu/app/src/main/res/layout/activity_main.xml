@@ -23,8 +23,7 @@
         android:name="uqac.gestionvieetu.MainFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/toolbar"
-        tools:layout="@layout/layout_etudes" />
+        android:layout_below="@id/toolbar" />
 
 
 </RelativeLayout>

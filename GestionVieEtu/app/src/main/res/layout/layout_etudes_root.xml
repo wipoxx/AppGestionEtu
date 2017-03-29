@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    tools:context="uqac.gestionvieetu.MainActivity">
+
+    <Button
+        android:id="@+id/gererEDT"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:onClick="afficherLayoutEdt"
+        android:text="@string/bEDT"
+        android:textSize="@dimen/textSizeSmallButton" />
+
+    <Button
+        android:id="@+id/planifierRevisions"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:text="@string/bRevisions"
+        android:textSize="@dimen/textSizeSmallButton" />
+
+    <Button
+        android:id="@+id/gererNotes"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:text="@string/bNotes"
+        android:textSize="@dimen/textSizeSmallButton" />
+</LinearLayout>

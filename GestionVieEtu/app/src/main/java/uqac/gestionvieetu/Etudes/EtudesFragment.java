@@ -4,6 +4,7 @@ package uqac.gestionvieetu.Etudes;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,11 +21,13 @@ public class EtudesFragment extends Fragment {
         View layout_etude = inflater.inflate(R.layout.layout_etudes, container, false);
 
         //Récupère le calendrier et le passe à l'activité
-        CalendarView calendarView = (CalendarView) layout_etude.findViewById(R.id.calendrier);
+        //CalendarView calendarView = (CalendarView) layout_etude.findViewById(R.id.calendrier);
 
-        MainActivity mainActivity = (MainActivity) getActivity();
-        mainActivity.setCalendrier(calendarView);
+        //MainActivity mainActivity = (MainActivity) getActivity();
+        //mainActivity.setCalendrier(calendarView);
 
         return layout_etude;
     }
+
+
 }

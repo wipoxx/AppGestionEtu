@@ -1,5 +1,4 @@
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/layout_etudes"
     android:layout_width="match_parent"
@@ -12,33 +11,14 @@
         android:id="@+id/calendrier"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="2"
-        />
+        android:layout_weight="2" />
 
-
-    <Button
-        android:id="@+id/gererEDT"
+    <fragment
+        android:id="@+id/sous_etudes_fragment"
+        android:name="uqac.gestionvieetu.Etudes.RootEtudesFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_weight="4"
-        android:onClick="afficherBoutonsAgenda"
-        android:text="@string/bEDT"
-        android:textSize="@dimen/textSizeSmallButton"/>
+        android:layout_weight="4" />
 
-    <Button
-        android:id="@+id/planifierRevisions"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="4"
-        android:text="@string/bRevisions"
-        android:textSize="@dimen/textSizeSmallButton"/>
-
-    <Button
-        android:id="@+id/gererNotes"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_weight="4"
-        android:text="@string/bNotes"
-        android:textSize="@dimen/textSizeSmallButton"/>
 
 </LinearLayout>
