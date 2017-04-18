@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId "uqac.gestionvieetu"
         minSdkVersion 15
-        targetSdkVersion 25
+        targetSdkVersion 22
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
@@ -30,4 +30,5 @@ dependencies {
     compile 'org.jetbrains:annotations-java5:15.0'
     // For @Nullable/@NonNull
     compile 'com.android.support:support-annotations:+'
+    compile 'com.roomorama:caldroid:3.0.1'
 }

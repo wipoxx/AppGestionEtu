@@ -29,7 +29,12 @@ public class TimePickerFragment extends DialogFragment implements TimePickerDial
     @Override
     public void onTimeSet(TimePicker view, int hourOfDay, int minute) {
         MainActivity mainActivity = (MainActivity) getActivity();
-        String moment = hourOfDay + ":";
+        String moment = "";
+        //Affiche le 0 avant les heures si entre 0 et 9
+        if (hourOfDay < 10) {
+            moment += "0";
+        }
+        moment += hourOfDay + ":";
 
         //Affiche le 0 avant les minutes si entre 0 et 9
         if (minute < 10) {

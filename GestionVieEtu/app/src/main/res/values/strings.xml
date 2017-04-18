@@ -15,10 +15,69 @@
     <string name="bHoraire">+ Horaire de cours</string>
     <string name="bAFaire">+ Tâche à réaliser pour un cours</string>
     <string name="bExamProjet">+ Examen ou projet à rendre</string>
-    
+
+
+    <string name="etTitreHoraire">Sous-titre (facultatif)</string>
+    <string name="etLieuHoraire">Lieu</string>
+    <string name="etDetailHoraire">Détail, note, ...</string>
+
+
+    <!--<string name="bLundi">Lundi</string>
+    <string name="bMardi">Mardi</string>
+    <string name="bMercredi">Mercredi</string>
+    <string name="bJeudi">Jeudi</string>
+    <string name="bVendredi">Vendredi</string>
+    <string name="bSamedi">Samedi</string>
+    <string name="bDimanche">Dimanche</string>-->
+
     <string-array name="matieres_array">
-        <item>truc</item>
-        <item>trrruc</item>
+        <item>Tech web</item>
+        <item>Prog mobile</item>
     </string-array>
+
+    <string-array name="recurrence_evenement">
+        <item>Une fois</item>
+        <item>Tous les jours</item>
+        <item>Toutes les semaines</item>
+        <item>Toutes les deux semaines</item>
+        <item>Tous les mois</item>
+    </string-array>
+
+    <string-array name="jours_array">
+        <item>Lun.</item>
+        <item>Mar.</item>
+        <item>Mer.</item>
+        <item>Jeu.</item>
+        <item>Ven.</item>
+        <item>Sam.</item>
+        <item>Dim.</item>
+    </string-array>
+
+    <string name="monday">Lundi</string>
+    <string name="tuesday">Mardi</string>
+    <string name="wednesday">Mercredi</string>
+    <string name="thursday">Jeudi</string>
+    <string name="friday">Vendredi</string>
+    <string name="saturday">Samedi</string>
+    <string name="sunday">Dimanche</string>
+    <!--<string name="lundi">Lundi</string>
+    <string name="mardi">Mardi</string>
+    <string name="mercredi">Mercredi</string>
+    <string name="jeudi">Jeudi</string>
+    <string name="vendredi">Vendredi</string>
+    <string name="samedi">Samedi</string>
+    <string name="dimanche">Dimanche</string>-->
+    <string name="january">Janvier</string>
+    <string name="february">Février</string>
+    <string name="march">Mars</string>
+    <string name="april">Avril</string>
+    <string name="may">Mai</string>
+    <string name="june">Juin</string>
+    <string name="july">Juillet</string>
+    <string name="august">Août</string>
+    <string name="september">Septembre</string>
+    <string name="october">Octobre</string>
+    <string name="november">Novembre</string>
+    <string name="december">Decembre</string>
 
 </resources>

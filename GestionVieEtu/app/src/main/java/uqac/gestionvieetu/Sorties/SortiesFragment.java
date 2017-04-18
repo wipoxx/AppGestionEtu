@@ -20,7 +20,7 @@ public class SortiesFragment extends android.support.v4.app.Fragment{
         View layout_sortie = inflater.inflate(R.layout.layout_sorties, container, false);
 
         //Récupère le calendrier et le passe à l'activité
-        CalendarView calendarView = (CalendarView) layout_sortie.findViewById(R.id.calendrier);
+        //CalendarView calendarView = (CalendarView) layout_sortie.findViewById(R.id.calendrier);
         MainActivity mainActivity = (MainActivity) getActivity();
         //mainActivity.setCalendrier(calendarView);
 

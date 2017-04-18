@@ -7,17 +7,22 @@
     android:orientation="vertical"
     tools:context="uqac.gestionvieetu.MainActivity">
 
-    <CalendarView
+    <!--<CalendarView
         android:id="@+id/calendrier"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content" />-->
+
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/calendrier_fragment"
+        android:name="com.roomorama.caldroid.CaldroidFragment"/>
 
     <fragment
         android:id="@+id/sous_etudes_fragment"
         android:name="uqac.gestionvieetu.Etudes.RootEtudesFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/calendrier"/>
-
-
+        android:layout_below="@id/calendrier_fragment"/>
+    <!--android:layout_below="@id/calendrier"-->
 </RelativeLayout>
