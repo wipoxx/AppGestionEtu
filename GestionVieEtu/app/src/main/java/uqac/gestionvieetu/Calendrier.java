@@ -28,4 +28,9 @@ public class Calendrier {
     public boolean isVisible() {
         return visible;
     }
+
+    @Override
+    public String toString() {
+        return "Id : " +id+ " ; Nom : " +nom+ " ; visible ? " + (visible ? "oui" : "non");
+    }
 }

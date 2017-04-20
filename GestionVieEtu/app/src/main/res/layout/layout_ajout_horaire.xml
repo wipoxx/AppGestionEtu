@@ -83,8 +83,7 @@
         android:id="@+id/sRecurrence"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:scrollbarSize="@dimen/textSizeMediumButton"
-        android:textSize="30sp"/>
+        android:textSize="@dimen/textSizeMediumButton"/>
 
     <LinearLayout
         android:orientation="horizontal"

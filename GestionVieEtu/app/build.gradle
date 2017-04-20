@@ -17,6 +17,10 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    testOptions {
+        unitTests.returnDefaultValues = true
+    }
 }
 
 dependencies {
@@ -31,4 +35,8 @@ dependencies {
     // For @Nullable/@NonNull
     compile 'com.android.support:support-annotations:+'
     compile 'com.roomorama:caldroid:3.0.1'
+
+    //Tests
+    testCompile "org.mockito:mockito-core:+"
+    androidTestCompile "org.mockito:mockito-android:+"
 }

@@ -1,7 +1,6 @@
 package uqac.gestionvieetu;
 
 import android.content.Intent;
-import android.content.res.Resources;
 import android.icu.text.SimpleDateFormat;
 import android.icu.util.GregorianCalendar;
 import android.os.Build;
@@ -21,8 +20,6 @@ import android.widget.EditText;
 import android.widget.Spinner;
 
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
@@ -36,15 +33,9 @@ import uqac.gestionvieetu.Sorties.AjoutSortieFragment;
 import uqac.gestionvieetu.Sorties.SortiesFragment;
 
 public class MainActivity extends AppCompatActivity {
-    private CalendarView calendrier; //Le calendrier commun de l'appli
-
-    //Variables pour afficher l'heure choisie par l'utilisateur dans un bouton
-    private String dateSelectionnee;
-    private View bHeure;
-    private View bDate;
     private static HashMap<String, Boolean> lJoursSelectionnes;
-    static
-    {
+
+    static {
         lJoursSelectionnes = new HashMap<>();
         lJoursSelectionnes.put("MO", false);
         lJoursSelectionnes.put("TU", false);
@@ -54,6 +45,12 @@ public class MainActivity extends AppCompatActivity {
         lJoursSelectionnes.put("SA", false);
         lJoursSelectionnes.put("SU", false);
     }
+
+    private CalendarView calendrier; //Le calendrier commun de l'appli
+    //Variables pour afficher l'heure et la date choisie par l'utilisateur dans un bouton
+    private String dateSelectionnee;
+    private View bHeure;
+    private View bDate;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -267,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
                 boolean sortie = false; //var de sortie de boucle
                 boolean joursSelect = false;    //si des jours ont été selectionnés
                 int i = 0;
-                Object[] valeurs =  this.lJoursSelectionnes.values().toArray();
+                Object[] valeurs = this.lJoursSelectionnes.values().toArray();
 
                 //On cherche à savoir si des jours ont été selectionnés pour ajouter "BYDAY=.." dans la récurrence
                 while (!sortie || i < valeurs.length) {
@@ -279,14 +276,14 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 //Si des jours ont été selectionnés on les ajoute à la récurrence grâce au Hashmap
-                if(joursSelect) {
+                if (joursSelect) {
                     recurrence += ";BYDAY=";
                     for (String cle : this.lJoursSelectionnes.keySet()) {
                         if (this.lJoursSelectionnes.get(cle)) {
                             recurrence += cle + ",";
                         }
                     }
-                    recurrence.substring(0, recurrence.length()-2); //Enlève la dernière virgule
+                    recurrence.substring(0, recurrence.length() - 2); //Enlève la dernière virgule
                 }
 
                 break;
@@ -340,6 +337,8 @@ public class MainActivity extends AppCompatActivity {
 
         }
     }
+
+
 }
 
 
