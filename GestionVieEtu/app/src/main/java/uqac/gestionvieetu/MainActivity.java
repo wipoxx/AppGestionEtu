@@ -35,6 +35,7 @@ import uqac.gestionvieetu.Sorties.SortiesFragment;
 public class MainActivity extends AppCompatActivity {
     private static HashMap<String, Boolean> lJoursSelectionnes;
 
+    //Nécessaire pour AjouterHoraire > Récurrence : toutes les semaines > sélection des jours à répéter
     static {
         lJoursSelectionnes = new HashMap<>();
         lJoursSelectionnes.put("MO", false);
@@ -76,6 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            startActivity(new Intent(this, SettingsActivity.class));
             return true;
         }
 

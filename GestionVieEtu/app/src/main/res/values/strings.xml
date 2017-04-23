@@ -53,31 +53,9 @@
         <item>Dim.</item>
     </string-array>
 
-    <string name="monday">Lundi</string>
-    <string name="tuesday">Mardi</string>
-    <string name="wednesday">Mercredi</string>
-    <string name="thursday">Jeudi</string>
-    <string name="friday">Vendredi</string>
-    <string name="saturday">Samedi</string>
-    <string name="sunday">Dimanche</string>
-    <!--<string name="lundi">Lundi</string>
-    <string name="mardi">Mardi</string>
-    <string name="mercredi">Mercredi</string>
-    <string name="jeudi">Jeudi</string>
-    <string name="vendredi">Vendredi</string>
-    <string name="samedi">Samedi</string>
-    <string name="dimanche">Dimanche</string>-->
-    <string name="january">Janvier</string>
-    <string name="february">Février</string>
-    <string name="march">Mars</string>
-    <string name="april">Avril</string>
-    <string name="may">Mai</string>
-    <string name="june">Juin</string>
-    <string name="july">Juillet</string>
-    <string name="august">Août</string>
-    <string name="september">Septembre</string>
-    <string name="october">Octobre</string>
-    <string name="november">Novembre</string>
-    <string name="december">Decembre</string>
+    <string name="tvMatieresSettings">Matières suivies :</string>
+    <string name="tvDateFinSettings">Fin</string>
+    <string name="tvDateDebutSettings">Début</string>
+    <string name="tvDateTrimestreSettings">Dates du trimestre :</string>
 
 </resources>

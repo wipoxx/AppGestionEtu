@@ -6,4 +6,5 @@
     <dimen name="textSizeMain">25sp</dimen>
     <dimen name="textSizeMediumButton">20sp</dimen>
     <dimen name="textSizeSmallButton">15sp</dimen>
+    <dimen name="paddingSettings">15dp</dimen>
 </resources>
