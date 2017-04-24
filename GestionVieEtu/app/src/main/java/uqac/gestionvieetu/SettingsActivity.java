@@ -34,8 +34,11 @@ import java.util.ArrayList;
 public class SettingsActivity extends AppCompatActivity {
     private final String NOM_FICHIER = "matieres_settings";
     private ArrayList<String> lMatieres = new ArrayList<>();
-
+    private String dateSelectionnee;
+    private View bDate;
     //private String[] lMatieres = new String[]{"Tech bbbbbbb bbbbbbb bbbbbbb bbbbbbb bbbbbbb bbbbbbb bbbbbbb ", "Prog mobile", "Marketing", "Sa race", "Chaussette", "Chaussette", "Chaussette", "Chaussette", "Chaussette", "Chaussette", "Chaussette", "Chaussette", "Chaussette", "Chaussette"};
+
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -157,5 +160,16 @@ public class SettingsActivity extends AppCompatActivity {
         menu.setHeaderTitle(((TextView) v).getText());
         menu.add(0, v.getId(), 0, "Modifier");
         menu.add(0, v.getId(), 0, "Supprimer");
+    }
+
+    public void afficherDatePicker(View view) {
+        DatePickerFragment datePicker = new DatePickerFragment();
+        datePicker.show(getSupportFragmentManager(), "timePicker");
+        bDate = view;
+    }
+
+    public void setDateSelectionnee(String dateSelectionnee) {
+        this.dateSelectionnee = dateSelectionnee;
+        ((Button) bDate).setText(dateSelectionnee);
     }
 }
