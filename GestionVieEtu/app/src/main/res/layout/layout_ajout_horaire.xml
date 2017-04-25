@@ -17,7 +17,7 @@
         android:id="@+id/etTitreHoraire"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Titre"
+        android:hint="@string/etTitreHoraire"
         android:textSize="@dimen/textSizeMediumButton" />
 
     <TableLayout
@@ -57,7 +57,6 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:onClick="afficherTimePicker"
-                android:text="0:00"
                 android:textSize="@dimen/textSizeMediumButton" />
         </TableRow>
 
@@ -76,23 +75,42 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="5"
                 android:onClick="afficherTimePicker"
-                android:text="0:00"
                 android:textSize="@dimen/textSizeMediumButton" />
         </TableRow>
     </TableLayout>
+
+    <Spinner
+        android:id="@+id/sRecurrence"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/textSizeMediumButton"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/llJours1"
+        android:gravity="center"/>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/llJours2"
+        android:gravity="center"/>
 
     <EditText
         android:id="@+id/etLieuEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Lieu"
+        android:hint="@string/etLieuHoraire"
         android:textSize="@dimen/textSizeMediumButton" />
 
     <EditText
         android:id="@+id/etNoteEdt"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Note, détail, ..."
+        android:hint="@string/etDetailHoraire"
         android:textSize="@dimen/textSizeMediumButton" />
 
     <Button
@@ -100,7 +118,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Enregistrer"
-        android:textSize="@dimen/textSizeMediumButton" />
+        android:textSize="@dimen/textSizeMediumButton"
+        android:onClick="ajoutHoraire"/>
 
 
 </LinearLayout>

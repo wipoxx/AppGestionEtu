@@ -15,10 +15,47 @@
     <string name="bHoraire">+ Horaire de cours</string>
     <string name="bAFaire">+ Tâche à réaliser pour un cours</string>
     <string name="bExamProjet">+ Examen ou projet à rendre</string>
-    
+
+
+    <string name="etTitreHoraire">Sous-titre (facultatif)</string>
+    <string name="etLieuHoraire">Lieu</string>
+    <string name="etDetailHoraire">Détail, note, ...</string>
+
+
+    <!--<string name="bLundi">Lundi</string>
+    <string name="bMardi">Mardi</string>
+    <string name="bMercredi">Mercredi</string>
+    <string name="bJeudi">Jeudi</string>
+    <string name="bVendredi">Vendredi</string>
+    <string name="bSamedi">Samedi</string>
+    <string name="bDimanche">Dimanche</string>-->
+
     <string-array name="matieres_array">
-        <item>truc</item>
-        <item>trrruc</item>
+        <item>Tech web</item>
+        <item>Prog mobile</item>
     </string-array>
+
+    <string-array name="recurrence_evenement">
+        <item>Une fois</item>
+        <item>Tous les jours</item>
+        <item>Toutes les semaines</item>
+        <item>Toutes les deux semaines</item>
+        <item>Tous les mois</item>
+    </string-array>
+
+    <string-array name="jours_array">
+        <item>Lun.</item>
+        <item>Mar.</item>
+        <item>Mer.</item>
+        <item>Jeu.</item>
+        <item>Ven.</item>
+        <item>Sam.</item>
+        <item>Dim.</item>
+    </string-array>
+
+    <string name="tvMatieresSettings">Matières suivies :</string>
+    <string name="tvDateFinSettings">Fin</string>
+    <string name="tvDateDebutSettings">Début</string>
+    <string name="tvDateTrimestreSettings">Dates du trimestre :</string>
 
 </resources>
