@@ -11,6 +11,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CalendarView;
 
 import com.roomorama.caldroid.CaldroidFragment;
 import com.roomorama.caldroid.CaldroidListener;
@@ -42,20 +43,11 @@ public class EtudesFragment extends Fragment {
         FragmentManager fragmentManager = getChildFragmentManager();
         calendrierFragment = (CaldroidFragment) fragmentManager.findFragmentById(R.id.calendrier_fragment);
 
-<<<<<<< HEAD
-        //Date par défaut = date courante
-        CalendarView calendarView = (CalendarView) layout_etude.findViewById(R.id.calendrier);
-        Long date = calendarView.getDate();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        String dateCourante = simpleDateFormat.format(date);
-        activity.setDateSelectionnee(dateCourante);
 
         //Quand l'utilisateur sélectionne une date
-        calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
-=======
+
         final CaldroidListener caldroidListener = new CaldroidListener() {
             //Lorsque l'utilisateur sélectionne une date
->>>>>>> e7651639b32f19c0e87073c5ceb7700e496c92ef
             @Override
             public void onSelectDate(Date date, View view) {
 

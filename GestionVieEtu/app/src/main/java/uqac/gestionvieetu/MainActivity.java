@@ -20,19 +20,17 @@ import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-<<<<<<< HEAD
+
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-=======
 import java.text.ParseException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
 import uqac.gestionvieetu.Etudes.AjoutHoraireFragment;
->>>>>>> e7651639b32f19c0e87073c5ceb7700e496c92ef
 import uqac.gestionvieetu.Etudes.AjoutTacheFragment;
 import uqac.gestionvieetu.Etudes.EdtFragment;
 import uqac.gestionvieetu.Etudes.EtudesFragment;

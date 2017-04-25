@@ -5,13 +5,18 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationListener;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.Toast;
+
+
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapView;
@@ -21,7 +26,6 @@ import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
@@ -38,14 +42,16 @@ import uqac.gestionvieetu.R;
  * Created by guill on 23/04/2017.
  */
 
-public class FragmentMapActivity extends android.support.v4.app.Fragment implements OnMapReadyCallback, GoogleMap.OnMarkerClickListener, GoogleMap.OnMarkerDragListener {
+public class FragmentMapActivity extends android.support.v4.app.Fragment implements OnMapReadyCallback,
+        GoogleMap.OnMarkerClickListener, GoogleMap.OnMarkerDragListener, LocationListener {
 
     private View rootView;
     MapView mapView;
     GoogleMap map;
-    private List<LatLng> listOfPoints=new ArrayList<LatLng>();
-    private MarkerOptions options = new MarkerOptions();
-
+    private ArrayList<LatLng> listOfPoints=new ArrayList<LatLng>();
+    private ArrayList<Marker> listOfMarkers=new ArrayList<Marker>();
+    Location mLastLocation;
+    boolean mLocationPermissionGranted = false;
     @Override
     public void onCreate(Bundle savedInstanceState) { super.onCreate(savedInstanceState);
     }
@@ -54,6 +60,16 @@ public class FragmentMapActivity extends android.support.v4.app.Fragment impleme
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         rootView = inflater.inflate(R.layout.layout_carte, container, false);
+        Button button = (Button) rootView.findViewById(R.id.delmarker);
+        button.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                SuppressionMarqueur();
+            }
+        });
+
         MapsInitializer.initialize(this.getActivity());
         mapView = (MapView) rootView.findViewById(R.id.mapView);
         mapView.onCreate(savedInstanceState);
@@ -73,24 +89,64 @@ public class FragmentMapActivity extends android.support.v4.app.Fragment impleme
         }
 
 
-        float zoomLevel = 16; //This goes up to 21
+        float zoomLevel = 16;
         map.moveCamera(CameraUpdateFactory.newLatLngZoom(mnPoint, zoomLevel));
-        map.addMarker(new MarkerOptions()
+        /*Marker uniMarker = map.addMarker(new MarkerOptions()
                 .position(mnPoint)
                 .title("Université du Québec à Chicoutimi"));
+
+        listOfMarkers.add(uniMarker);
+        listOfPoints.add(mnPoint);*/
+
+        try {
+            FileInputStream input = this.getContext().openFileInput("latlngpoints5.txt"); //récupération des marqueurs
+            DataInputStream din = new DataInputStream(input);
+            int sz = din.readInt(); // Read line count
+            for (int i = 0; i < sz; i++) {
+                String str = din.readUTF();
+                String[] stringArray = str.split(",");
+                double latitude = Double.parseDouble(stringArray[0]);
+                double longitude = Double.parseDouble(stringArray[1]);
+                listOfPoints.add(new LatLng(latitude, longitude));
+            }
+            din.close();
+            for (LatLng point : listOfPoints) {
+                Marker sMarker = map.addMarker(new MarkerOptions()
+                        .position(point)
+                        .icon(BitmapDescriptorFactory.defaultMarker(new Random().nextInt(360)))
+                        .draggable(true));
+                listOfMarkers.add(sMarker);
+                Geocoder geoSave = new Geocoder(getContext());
+                List<Address> addresses = null;
+                try {
+                    addresses = geoSave.getFromLocation(point.latitude, point.longitude, 1);
+                    if (addresses.isEmpty()) {
+                        sMarker.setTitle("Waiting for Location");
+                    }
+                    else {
+                        if (addresses.size() > 0) {
+                            sMarker.setTitle(addresses.get(0).getAddressLine(0) +" "  + addresses.get(0).getPostalCode() +" " + addresses.get(0).getAdminArea() + ", " + addresses.get(0).getCountryName());
+                        }
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        } catch (IOException exc) {
+            exc.printStackTrace();
+        }
+
 
         map.setOnMapClickListener(new GoogleMap.OnMapClickListener() {
             @Override
             public void onMapClick(LatLng point) {
                 Marker nMarker = map.addMarker(new MarkerOptions()
                         .position(point)
-                        .title("Nouveau point")
                         .icon(BitmapDescriptorFactory.defaultMarker(new Random().nextInt(360)))
                         .draggable(true)
                 );
-
-                listOfPoints.add(point);
-
+                listOfPoints.add(nMarker.getPosition());
+                listOfMarkers.add(nMarker);
                 Geocoder geo = new Geocoder(getContext());
                 List<Address> addresses = null;
                 try {
@@ -100,43 +156,57 @@ public class FragmentMapActivity extends android.support.v4.app.Fragment impleme
                     }
                     else {
                         if (addresses.size() > 0) {
-                            nMarker.setTitle(/*addresses.get(0).getLocality() + " "+ */addresses.get(0).getAddressLine(0) +" "  + addresses.get(0).getPostalCode() +" " + addresses.get(0).getAdminArea() + ", " + addresses.get(0).getCountryName());
-                            Toast.makeText(getContext(), "Marqueur ajouté : "+ addresses.get(0).getAddressLine(0) +" "  + addresses.get(0).getPostalCode() +" " + addresses.get(0).getAdminArea() + ", " + addresses.get(0).getCountryName(), Toast.LENGTH_LONG).show();
+                            nMarker.setTitle(addresses.get(0).getAddressLine(0) +" "  + addresses.get(0).getPostalCode() +" "
+                                    + addresses.get(0).getAdminArea() + ", " + addresses.get(0).getCountryName());
+                            Toast.makeText(getContext(),"Marqueur ajouté",Toast.LENGTH_LONG).show();
                         }
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-               // map.setInfoWindowAdapter(nMarker);
                 nMarker.showInfoWindow();
             }
         });
-       /* map.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener()
-        {
-            @Override
-            public boolean onMarkerClick(Marker marker) {
-                marker.remove();
-                return true;
-            }
-
-        });*/
         map.setOnMarkerDragListener(new GoogleMap.OnMarkerDragListener() {
 
             @Override
             public void onMarkerDragStart(Marker marker) {
-                marker.remove();
+
             }
 
             @Override
             public void onMarkerDragEnd(Marker marker) {
-                marker.remove();
+                listOfMarkers.remove(marker);
+                Geocoder geoSave = new Geocoder(getContext());
+                List<Address> addresses = null;
+                try {
+                    addresses = geoSave.getFromLocation(marker.getPosition().latitude, marker.getPosition().longitude, 1);
+                    if (addresses.isEmpty()) {
+                        marker.setTitle("Waiting for Location");
+                    }
+                    else {
+                        if (addresses.size() > 0) {
+                            marker.setTitle(addresses.get(0).getAddressLine(0) +" "  + addresses.get(0).getPostalCode() +" " + addresses.get(0).getAdminArea() + ", " + addresses.get(0).getCountryName());
+                        }
+                    }
 
+                    listOfPoints.clear();
+                    listOfPoints.add(marker.getPosition());
+
+                    for (Marker mMarker : listOfMarkers) {
+                           listOfPoints.add(mMarker.getPosition());
+                    }
+                    listOfMarkers.add(marker);
+
+                    marker.showInfoWindow();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
             @Override
             public void onMarkerDrag(Marker marker) {
-                marker.remove();
+
             }
         });
     }
@@ -145,49 +215,23 @@ public class FragmentMapActivity extends android.support.v4.app.Fragment impleme
     public void onResume() {
         mapView.onResume();
         super.onResume();
-
-        listOfPoints.clear();
-        try {
-            FileInputStream input = this.getContext().openFileInput("latlngpoints.txt");
-            DataInputStream din = new DataInputStream(input);
-            int sz = din.readInt(); // Read line count
-            for (int i = 0; i < sz; i++) {
-                String str = din.readUTF();
-
-                String[] stringArray = str.split(",");
-                double latitude = Double.parseDouble(stringArray[0]);
-                double longitude = Double.parseDouble(stringArray[1]);
-                listOfPoints.add(new LatLng(latitude, longitude));
-
-            }
-            din.close();
-            for (LatLng point : listOfPoints) {
-                map.addMarker(new MarkerOptions()
-                        /*.position(new LatLng(47, -71.052187))
-                        .title("Nouveau point")
-                        .icon(BitmapDescriptorFactory.defaultMarker(new Random().nextInt(360)))
-                        .draggable(true)*/);
-                Toast.makeText(getContext(),"latitude : "+point.latitude+" Longitude : "+point.longitude,Toast.LENGTH_LONG).show();
-            }
-        } catch (IOException exc) {
-            exc.printStackTrace();
-        }
     }
 
     @Override
     public void onPause() {
         try {
-            // Modes: MODE_PRIVATE, MODE_WORLD_READABLE, MODE_WORLD_WRITABLE
-            FileOutputStream output = this.getContext().openFileOutput("latlngpoints.txt",
+            FileOutputStream output = this.getContext().openFileOutput("latlngpoints5.txt",
                     Context.MODE_PRIVATE);
+            output.write(("").getBytes());
             DataOutputStream dout = new DataOutputStream(output);
             dout.writeInt(listOfPoints.size()); // Save line count
             for (LatLng point : listOfPoints) {
                 dout.writeUTF(point.latitude + "," + point.longitude);
-                Toast.makeText(getContext(),point.latitude + "," + point.longitude,Toast.LENGTH_LONG).show();
             }
             dout.flush(); // Flush stream ...
             dout.close(); // ... and close.
+            listOfPoints.clear();
+            listOfMarkers.clear();
         } catch (IOException exc) {
             exc.printStackTrace();
         }
@@ -209,7 +253,6 @@ public class FragmentMapActivity extends android.support.v4.app.Fragment impleme
 
     @Override
     public boolean onMarkerClick(Marker marker) {
-        marker.remove();
         return true;
     }
 
@@ -227,4 +270,35 @@ public class FragmentMapActivity extends android.support.v4.app.Fragment impleme
     public void onMarkerDragEnd(Marker marker) {
 
     }
+
+    public void SuppressionMarqueur(){
+
+
+        for(Marker marker : listOfMarkers ){
+            marker.remove();
+        }
+        listOfMarkers.clear();
+        listOfPoints.clear();
+    }
+
+    @Override
+    public void onLocationChanged(Location location) {
+
+    }
+
+    @Override
+    public void onStatusChanged(String provider, int status, Bundle extras) {
+
+    }
+
+    @Override
+    public void onProviderEnabled(String provider) {
+
+    }
+
+    @Override
+    public void onProviderDisabled(String provider) {
+
+    }
+
 }
