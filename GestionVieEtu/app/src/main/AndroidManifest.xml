@@ -33,12 +33,6 @@
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="AIzaSyCMA19pA5e40qI1tgw7NXi7IpyMCAfpk7U" />
-<<<<<<< HEAD
-
-        android:theme="@style/AppTheme">
-=======
-        
->>>>>>> 0892c8ec87ac29de4b656197c31b28347a7577eb
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"
