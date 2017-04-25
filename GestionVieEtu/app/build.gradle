@@ -34,13 +34,10 @@ dependencies {
     compile 'org.jetbrains:annotations-java5:15.0'
     // For @Nullable/@NonNull
     compile 'com.android.support:support-annotations:+'
-<<<<<<< HEAD
     compile 'com.google.android.gms:play-services-maps:10.0.1'
-=======
     compile 'com.roomorama:caldroid:3.0.1'
 
     //Tests
     testCompile "org.mockito:mockito-core:+"
     androidTestCompile "org.mockito:mockito-android:+"
->>>>>>> e7651639b32f19c0e87073c5ceb7700e496c92ef
 }
