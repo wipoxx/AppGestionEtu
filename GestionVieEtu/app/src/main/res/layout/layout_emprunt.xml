@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout_budget"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_vertical_margin">
+
+    <LinearLayout
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Montant"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lblMontantEmprunt"
+            android:padding="20dp"/>
+
+        <EditText
+            android:text=""
+            android:inputType="number"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etEmprunt"
+            android:layout_weight = "1"
+            android:padding="20dp"/>
+
+        <TextView
+            android:text="Date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lblDateEmprunt"
+            android:padding="20dp"/>
+
+        <Button
+            android:text="Sélectionner une date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/btnDateEmp"
+            android:onClick="afficherDatePicker"
+            android:padding="20dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Emprunté à"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/lblEmprunt"/>
+
+        <EditText
+            android:text=""
+            android:hint="Nom"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etEmpruntNom"
+            android:layout_weight = "1"
+            android:padding="20dp"/>
+
+        <EditText
+            android:text=""
+            android:hint="Prénom"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/etEmpruntPrenom"
+            android:layout_weight = "1"
+            android:padding="20dp"/>
+    </LinearLayout>
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/spinnerTypeEmp"
+        android:padding="20dp"/>
+
+    <Button
+        android:text="Valider"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/btnValiderEmprunt"
+        android:onClick="afficherLayoutBudget"
+        android:padding="20dp"/>
+
+</LinearLayout>

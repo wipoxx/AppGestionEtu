@@ -31,6 +31,19 @@ import uqac.gestionvieetu.Etudes.EtudesFragment;
 import uqac.gestionvieetu.Etudes.RootEtudesFragment;
 import uqac.gestionvieetu.Sorties.AjoutSortieFragment;
 import uqac.gestionvieetu.Sorties.SortiesFragment;
+import uqac.gestionvieetu.AjoutBudgetFragment;
+import uqac.gestionvieetu.BudgetFragment;
+import uqac.gestionvieetu.DAOBase;
+import uqac.gestionvieetu.DataBase;
+import uqac.gestionvieetu.DepenseFragment;
+import uqac.gestionvieetu.DetteFragment;
+import uqac.gestionvieetu.EmpruntFragment;
+import uqac.gestionvieetu.RecetteFragment;
+import uqac.gestionvieetu.TableBudget;
+import uqac.gestionvieetu.TableDepenseRecette;
+import uqac.gestionvieetu.TableDetteEmprunt;
+
+
 
 public class MainActivity extends AppCompatActivity {
     private static HashMap<String, Boolean> lJoursSelectionnes;
@@ -102,6 +115,24 @@ public class MainActivity extends AppCompatActivity {
     //Lors d'un clic sur le bouton Budget dans la première fenêtre
     public void afficherLayoutBudget(View view) {
         this.changerLayout(new BudgetFragment());
+    }
+
+    public void afficherLayoutAjoutBudget(View view){ this.changerLayout(new AjoutBudgetFragment()); }
+
+    public void afficherLayoutDepense(View view) {
+        this.changerLayout(new DepenseFragment());
+        DAOBase db = new DAOBase(this);
+        db.open();
+    }
+
+    public void afficherLayoutRecette(View view) {
+        this.changerLayout(new RecetteFragment());
+    }
+
+    public void afficherLayoutEmprunt(View view) { this.changerLayout(new EmpruntFragment()); }
+
+    public void afficherLayoutDette(View view) {
+        this.changerLayout(new DetteFragment());
     }
 
     //Lors d'un clic sur le bouton Ajouter horaire ; affiche layout Ajout horaire
