@@ -28,7 +28,7 @@ public class EtudesFragment extends Fragment {
         //Date par défaut = date courante
         CalendarView calendarView = (CalendarView) layout_etude.findViewById(R.id.calendrier);
         Long date = calendarView.getDate();
-        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/YYYY");
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd");
         String dateCourante = simpleDateFormat.format(date);
         activity.setDateSelectionnee(dateCourante);
 

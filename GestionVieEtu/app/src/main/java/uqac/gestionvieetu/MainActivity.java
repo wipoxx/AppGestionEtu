@@ -3,6 +3,7 @@ package uqac.gestionvieetu;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -13,12 +14,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import uqac.gestionvieetu.Etudes.AjoutTacheFragment;
 import uqac.gestionvieetu.Etudes.EdtFragment;
 import uqac.gestionvieetu.Etudes.AjoutHoraireFragment;
 import uqac.gestionvieetu.Etudes.EtudesFragment;
 import uqac.gestionvieetu.Etudes.RootEtudesFragment;
+import uqac.gestionvieetu.Sorties.AffichageMapFragment;
 import uqac.gestionvieetu.Sorties.AjoutSortieFragment;
+import uqac.gestionvieetu.Sorties.FragmentMapActivity;
 import uqac.gestionvieetu.Sorties.SortiesFragment;
 
 public class MainActivity extends AppCompatActivity {
@@ -70,9 +77,7 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void afficherLayoutSorties(View view) {
-        this.changerLayout(new SortiesFragment());
-    }
+    public void afficherLayoutSorties(View view) {this.changerLayout(new SortiesFragment());}
 
     //Lors d'un clic sur le bouton Budget dans la première fenêtre
     public void afficherLayoutBudget(View view) {
@@ -91,6 +96,8 @@ public class MainActivity extends AppCompatActivity {
     public void ajoutSortie(View view) {
         this.changerLayout(new AjoutSortieFragment());
     }
+
+    public void affichageMap(View view) { this.changerLayout(new FragmentMapActivity());}
 
     //Place le fragment en entrée dans le main_fragment (et donc change la vue à afficher)
     public void changerLayout(Fragment fragment) {
