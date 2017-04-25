@@ -42,10 +42,14 @@ public class EtudesFragment extends Fragment {
         final MainActivity activity = (MainActivity) getActivity();
         FragmentManager fragmentManager = getChildFragmentManager();
         calendrierFragment = (CaldroidFragment) fragmentManager.findFragmentById(R.id.calendrier_fragment);
+<<<<<<< HEAD
 
 
         //Quand l'utilisateur sélectionne une date
 
+=======
+        
+>>>>>>> 8633b20727092b2af242ffd494e7741fff9a2a1a
         final CaldroidListener caldroidListener = new CaldroidListener() {
             //Lorsque l'utilisateur sélectionne une date
             @Override
