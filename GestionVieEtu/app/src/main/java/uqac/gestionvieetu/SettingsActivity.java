@@ -7,12 +7,13 @@ import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.view.ContextMenu;
+import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup.LayoutParams;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -23,22 +24,19 @@ import android.widget.ListView;
 import android.widget.PopupWindow;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.view.ContextMenu;
-import android.view.ContextMenu.ContextMenuInfo;
 
+import java.io.BufferedReader;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class SettingsActivity extends AppCompatActivity {
-    private final String NOM_FICHIER = "matieres_settings";
     private ArrayList<String> lMatieres = new ArrayList<>();
-    private String dateSelectionnee;
     private View bDate;
-    //private String[] lMatieres = new String[]{"Tech bbbbbbb bbbbbbb bbbbbbb bbbbbbb bbbbbbb bbbbbbb bbbbbbb ", "Prog mobile", "Marketing", "Sa race", "Chaussette", "Chaussette", "Chaussette", "Chaussette", "Chaussette", "Chaussette", "Chaussette", "Chaussette", "Chaussette", "Chaussette"};
 
-
+    @RequiresApi(api = Build.VERSION_CODES.KITKAT)
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -48,31 +46,20 @@ public class SettingsActivity extends AppCompatActivity {
 
         //Récupérer les matières déjà sauvegardées
         try {
-            FileInputStream fis = openFileInput(NOM_FICHIER);
-            int carInt = fis.read();
-            while (carInt != -1) {
-                String car = Integer.toString(carInt);
-                String matiere = "";
-                if (car.equals(";")) {
-                    matiere += car;
-                } else {
-                    lMatieres.add(matiere);
-                    matiere = "";
+            FileInputStream fis = openFileInput(getResources().getString(R.string.nomFichierMatieres));
+            BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (!line.equals("\n")) {
+                    lMatieres.add(line);
                 }
             }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+            br.close();
+            fis.close();
+
         } catch (IOException e) {
             e.printStackTrace();
         }
-
-
-        /*String FILENAME = "hello_file";
-        String string = "hello world!";
-
-        FileOutputStream fos = openFileOutput(FILENAME, Context.MODE_PRIVATE);
-        fos.write(string.getBytes());
-        fos.close();*/
 
         afficherListeMatieres();
 
@@ -122,7 +109,6 @@ public class SettingsActivity extends AppCompatActivity {
                 lMatieres.add(etMatiere.getText().toString());
                 popup.dismiss();
                 afficherListeMatieres();
-                //SAUVEGARDE DS FICHIER
             }
         });
 
@@ -145,6 +131,8 @@ public class SettingsActivity extends AppCompatActivity {
         lvMatieres.setAdapter(adapter);
         lvMatieres.setTextFilterEnabled(true);
 
+        //Context menu avec un clic long sur une matière
+        //registerForContextMenu(lvMatieres);
         lvMatieres.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
@@ -156,10 +144,36 @@ public class SettingsActivity extends AppCompatActivity {
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
         super.onCreateContextMenu(menu, v, menuInfo);
-        TextView tvMatiere = (TextView) v;
         menu.setHeaderTitle(((TextView) v).getText());
+        Toast.makeText(this, v.getId() + "", Toast.LENGTH_SHORT).show();
         menu.add(0, v.getId(), 0, "Modifier");
         menu.add(0, v.getId(), 0, "Supprimer");
+
+
+        /*if (v.getId() == R.id.lvMatieresSettings) {
+            ListView lv = (ListView) v;
+            AdapterView.AdapterContextMenuInfo acmi = (AdapterView.AdapterContextMenuInfo) menuInfo;
+            //TextView obj = (TextView) lv.getItemAtPosition(acmi.position);
+            String obj = (String) lv.getItemAtPosition(acmi.position);
+            menu.add("One");
+            menu.add("Two");
+            menu.add("Three");
+            menu.add(obj);
+        }*/
+
+    }
+
+    @Override
+    public boolean onContextItemSelected(MenuItem item) {
+        Toast.makeText(this, item.getItemId() + "", Toast.LENGTH_SHORT).show();
+        if (item.getTitle() == "Modifier") {
+            Toast.makeText(this, item.getItemId() + "", Toast.LENGTH_SHORT).show();
+        } else if (item.getTitle() == "Supprimer") {
+            Toast.makeText(this, item.getTitle(), Toast.LENGTH_SHORT).show();
+        } else {
+            return false;
+        }
+        return true;
     }
 
     public void afficherDatePicker(View view) {
@@ -169,7 +183,26 @@ public class SettingsActivity extends AppCompatActivity {
     }
 
     public void setDateSelectionnee(String dateSelectionnee) {
-        this.dateSelectionnee = dateSelectionnee;
         ((Button) bDate).setText(dateSelectionnee);
+    }
+
+    public void enregistrerMatieres(View view) {
+        //SAUVEGARDE DS FICHIER
+        FileOutputStream fos;
+        try {
+            fos = openFileOutput(getResources().getString(R.string.nomFichierMatieres), Context.MODE_PRIVATE);
+
+            //Ajouter chaque matière dans le fichier
+            for (String nomMatiere : lMatieres) {
+                fos.write(nomMatiere.getBytes());
+                fos.write("\n".getBytes());
+            }
+
+
+            fos.close();
+            Toast.makeText(this, "Matières enregistrées", Toast.LENGTH_SHORT).show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

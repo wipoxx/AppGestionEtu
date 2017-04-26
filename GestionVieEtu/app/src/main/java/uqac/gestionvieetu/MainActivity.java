@@ -15,24 +15,38 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.io.BufferedReader;
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.text.ParseException;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
+import uqac.gestionvieetu.Budget.AjoutBudgetFragment;
+import uqac.gestionvieetu.Budget.BudgetFragment;
+import uqac.gestionvieetu.Budget.DepenseFragment;
+import uqac.gestionvieetu.Budget.DetteFragment;
+import uqac.gestionvieetu.Budget.EmpruntFragment;
+import uqac.gestionvieetu.Budget.RecetteFragment;
 import uqac.gestionvieetu.Etudes.AjoutHoraireFragment;
 import uqac.gestionvieetu.Etudes.AjoutTacheFragment;
 import uqac.gestionvieetu.Etudes.EdtFragment;
 import uqac.gestionvieetu.Etudes.EtudesFragment;
 import uqac.gestionvieetu.Etudes.RootEtudesFragment;
 import uqac.gestionvieetu.Sorties.AjoutSortieFragment;
+import uqac.gestionvieetu.Sorties.FragmentMapActivity;
 import uqac.gestionvieetu.Sorties.SortiesFragment;
+<<<<<<< HEAD
 import uqac.gestionvieetu.Budget.BudgetActivty;
 
+=======
+>>>>>>> 718824c1ad809e89b86e3c177119a7e08c14d923
 
 
 public class MainActivity extends AppCompatActivity{
@@ -50,7 +64,6 @@ public class MainActivity extends AppCompatActivity{
         lJoursSelectionnes.put("SU", false);
     }
 
-    private CalendarView calendrier; //Le calendrier commun de l'appli
     //Variables pour afficher l'heure et la date choisie par l'utilisateur dans un bouton
     private String dateSelectionnee;
     private View bHeure;
@@ -112,6 +125,33 @@ public class MainActivity extends AppCompatActivity{
         this.changerLayout(new SortiesFragment());
     }
 
+<<<<<<< HEAD
+=======
+    //Lors d'un clic sur le bouton Budget dans la première fenêtre
+    public void afficherLayoutBudget(View view) {
+        this.changerLayout(new BudgetFragment());
+    }
+
+    public void afficherLayoutAjoutBudget(View view) {
+        this.changerLayout(new AjoutBudgetFragment());
+    }
+
+    public void afficherLayoutDepense(View view) {
+        this.changerLayout(new DepenseFragment());
+    }
+
+    public void afficherLayoutRecette(View view) {
+        this.changerLayout(new RecetteFragment());
+    }
+
+    public void afficherLayoutEmprunt(View view) {
+        this.changerLayout(new EmpruntFragment());
+    }
+
+    public void afficherLayoutDette(View view) {
+        this.changerLayout(new DetteFragment());
+    }
+>>>>>>> 718824c1ad809e89b86e3c177119a7e08c14d923
 
     //Lors d'un clic sur le bouton Ajouter horaire ; affiche layout Ajout horaire
     public void afficherAjoutHoraire(View view) {
@@ -124,6 +164,10 @@ public class MainActivity extends AppCompatActivity{
 
     public void ajoutSortie(View view) {
         this.changerLayout(new AjoutSortieFragment());
+    }
+
+    public void affichageMap(View view) {
+        this.changerLayout(new FragmentMapActivity());
     }
 
     //Place le fragment en entrée dans le main_fragment (et donc change la vue à afficher)
@@ -170,10 +214,11 @@ public class MainActivity extends AppCompatActivity{
     @Override
     public void onBackPressed() {
         Fragment currentFragment = this.getSupportFragmentManager().findFragmentById(R.id.main_fragment);
-
         if (currentFragment instanceof AjoutHoraireFragment || currentFragment instanceof AjoutTacheFragment) {
             this.changerLayout(new EtudesFragment());
             this.changerLayout(new EdtFragment(), R.id.sous_etudes_fragment);
+        } else if (currentFragment instanceof AjoutSortieFragment || currentFragment instanceof FragmentMapActivity) {
+            this.changerLayout(new SortiesFragment());
         } else if (currentFragment instanceof EtudesFragment) {
             Fragment currentFragment2 = this.getSupportFragmentManager().findFragmentById(R.id.sous_etudes_fragment);
             if (currentFragment2 instanceof EdtFragment) {
@@ -181,6 +226,8 @@ public class MainActivity extends AppCompatActivity{
             } else {
                 this.changerLayout(new MainFragment());
             }
+        } else if (currentFragment instanceof SortiesFragment) {
+            this.changerLayout(new MainFragment());
         } else {
             super.onBackPressed();
         }
@@ -192,13 +239,8 @@ public class MainActivity extends AppCompatActivity{
 
     public void setDateSelectionnee(String dateSelectionnee) {
         this.dateSelectionnee = dateSelectionnee;
-        Fragment currentFragment = this.getSupportFragmentManager().findFragmentById(R.id.main_fragment);
+        ((Button) bDate).setText(dateSelectionnee);
 
-        if (currentFragment instanceof AjoutHoraireFragment) {
-            ((AjoutHoraireFragment) currentFragment).setDate(dateSelectionnee, bDate);
-        } else if (currentFragment instanceof AjoutTacheFragment) {
-            ((AjoutTacheFragment) currentFragment).setDate(dateSelectionnee, bDate);
-        }
     }
 
 
@@ -275,7 +317,7 @@ public class MainActivity extends AppCompatActivity{
                 boolean sortie = false; //var de sortie de boucle
                 boolean joursSelect = false;    //si des jours ont été selectionnés
                 int i = 0;
-                Object[] valeurs = this.lJoursSelectionnes.values().toArray();
+                Object[] valeurs = lJoursSelectionnes.values().toArray();
 
                 //On cherche à savoir si des jours ont été selectionnés pour ajouter "BYDAY=.." dans la récurrence
                 while (!sortie || i < valeurs.length) {
@@ -289,19 +331,18 @@ public class MainActivity extends AppCompatActivity{
                 //Si des jours ont été selectionnés on les ajoute à la récurrence grâce au Hashmap
                 if (joursSelect) {
                     recurrence += ";BYDAY=";
-                    for (String cle : this.lJoursSelectionnes.keySet()) {
-                        if (this.lJoursSelectionnes.get(cle)) {
+                    for (String cle : lJoursSelectionnes.keySet()) {
+                        if (lJoursSelectionnes.get(cle)) {
                             recurrence += cle + ",";
                         }
                     }
-                    recurrence.substring(0, recurrence.length() - 2); //Enlève la dernière virgule
+                    //recurrence.substring(0, recurrence.length() - 2); //Enlève la dernière virgule
                 }
 
                 break;
             case "Tous les mois":
                 recurrence = "FREQ=MONTHLY";
         }
-        recurrence.toString();
         //intent.putExtra(CalendarContract.Events.RRULE, "FREQ=WEEKLY;COUNT=11;WKST=SU;BYDAY=TU,TH");
         if (!recurrence.isEmpty()) {
             intent.putExtra(CalendarContract.Events.RRULE, recurrence);
@@ -325,29 +366,94 @@ public class MainActivity extends AppCompatActivity{
         //Le hashmap sait quels jours sont seletionnés ou non ; les garde dans l'ordre de la semaine
         switch (b.getText().toString()) {
             case "Lun.":
-                this.lJoursSelectionnes.put("MO", !this.lJoursSelectionnes.get("MO"));
+                lJoursSelectionnes.put("MO", !lJoursSelectionnes.get("MO"));
                 break;
             case "Mar.":
-                this.lJoursSelectionnes.put("TU", !this.lJoursSelectionnes.get("TU"));
+                lJoursSelectionnes.put("TU", !lJoursSelectionnes.get("TU"));
                 break;
             case "Mer.":
-                this.lJoursSelectionnes.put("WE", !this.lJoursSelectionnes.get("WE"));
+                lJoursSelectionnes.put("WE", !lJoursSelectionnes.get("WE"));
                 break;
             case "Jeu.":
-                this.lJoursSelectionnes.put("TH", !this.lJoursSelectionnes.get("TH"));
+                lJoursSelectionnes.put("TH", !lJoursSelectionnes.get("TH"));
                 break;
             case "Ven.":
-                this.lJoursSelectionnes.put("FR", !this.lJoursSelectionnes.get("FR"));
+                lJoursSelectionnes.put("FR", !lJoursSelectionnes.get("FR"));
                 break;
             case "Sam.":
-                this.lJoursSelectionnes.put("SA", !this.lJoursSelectionnes.get("SA"));
+                lJoursSelectionnes.put("SA", !lJoursSelectionnes.get("SA"));
                 break;
             case "Dim.":
-                this.lJoursSelectionnes.put("SU", !this.lJoursSelectionnes.get("SU"));
+                lJoursSelectionnes.put("SU", !lJoursSelectionnes.get("SU"));
                 break;
 
         }
     }
+<<<<<<< HEAD
+=======
+
+
+    //Récupérer les matières sauvegardées dans un fichier depuis les Settings
+    public ArrayList<String> getMatieres() {
+        ArrayList<String> lMatieres = new ArrayList<>();
+
+        try {
+            FileInputStream fis = openFileInput(getResources().getString(R.string.nomFichierMatieres));
+            BufferedReader br = new BufferedReader(new InputStreamReader(fis));
+            String line;
+            while ((line = br.readLine()) != null) {
+                if (!line.equals("\n")) {
+                    lMatieres.add(line);
+                }
+            }
+            br.close();
+            fis.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return lMatieres;
+    }
+
+    /*public void afficherHistoque (View view) {
+            @SuppressWarnings("unchecked")
+            ArrayAdapter<TableDepenseRecette> adapter = (ArrayAdapter<TableDepenseRecette>) getListAdapter();
+            TableDepenseRecette dr = null;
+            switch (view.getId()) {
+                case R.id.btnDepense:
+                    String[] dep = new String[] { "Cool", "Very nice", "Hate it" };
+                    int nextInt = new Random().nextInt(3);
+                    // enregistrer le nouveau commentaire dans la base de données
+                    comment = datasource.createComment(comments[nextInt]);
+                    adapter.add(comment);
+                    break;
+                case R.id.delete:
+                    if (getListAdapter().getCount() > 0) {
+                        comment = (Comment) getListAdapter().getItem(0);
+                        datasource.deleteComment(comment);
+                        adapter.remove(comment);
+                    }
+                    break;
+            }
+            adapter.notifyDataSetChanged();
+        } */
+
+
+    /*public void modifierBudget(View view){
+        EditText et = (EditText)findViewById(R.id.lblAjoutBudget);
+        String b = et.getText().toString();
+        float a = Float.parseFloat(b);
+        DAOBase db = new DAOBase(this);
+        db.open();
+
+        /*TableBudget tb = new TableBudget(a, a, "decembre", "2010");
+        db.ajouterBudget(tb);
+
+        db.close();
+
+        afficherLayoutBudget(view);
+    }*/
+>>>>>>> 718824c1ad809e89b86e3c177119a7e08c14d923
 }
 
 

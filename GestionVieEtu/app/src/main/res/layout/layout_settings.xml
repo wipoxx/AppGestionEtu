@@ -36,15 +36,15 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="70dp"
+                android:layout_height="50dp"
                 android:orientation="horizontal"
-                android:padding="@dimen/paddingSettings">
+                android:paddingLeft="5dp">
 
                 <TextView
                     style="@style/textSettings"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="3"
                     android:gravity="center"
                     android:text="@string/tvDateDebutSettings" />
 
@@ -55,12 +55,18 @@
                     android:layout_height="match_parent"
                     android:layout_weight="1"
                     android:onClick="afficherDatePicker"/>
+            </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:orientation="horizontal"
+                android:paddingLeft="5dp">
                 <TextView
                     style="@style/textSettings"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:layout_weight="1"
+                    android:layout_weight="3"
                     android:gravity="center"
                     android:text="@string/tvDateFinSettings" />
 
@@ -98,23 +104,18 @@
                         android:layout_height="match_parent"
                         android:layout_weight="1"
                         android:src="@drawable/ajouter"
-                        android:onClick="ajouterMatiere"/>
+                        android:onClick="ajouterMatiere"
+                        android:background="@android:color/transparent"/>
 
                     <ImageButton
-                        android:id="@+id/bModifierMatiere"
+                        android:id="@+id/bEnregistrerMatieres"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_weight="1"
-                        android:background="@android:color/transparent"
-                        android:src="@drawable/modifier" />
+                        android:src="@drawable/save_icon"
+                        android:onClick="enregistrerMatieres"
+                        android:background="@android:color/transparent"/>
 
-                    <ImageButton
-                        android:id="@+id/bSupprimerMatiere"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:background="@android:color/transparent"
-                        android:src="@drawable/supprimer" />
 
                 </LinearLayout>
                 <View

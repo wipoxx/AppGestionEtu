@@ -11,7 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/calendrier_fragment"
-        android:name="com.roomorama.caldroid.CaldroidFragment"/>
+        android:name="uqac.gestionvieetu.CalendrierFragment"/>
 
     <fragment
         android:id="@+id/sous_etudes_fragment"
