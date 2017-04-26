@@ -22,15 +22,7 @@ public class EtudesFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-<<<<<<< Updated upstream
         return inflater.inflate(R.layout.layout_etudes, container, false);
-=======
-        View layout_etudes = inflater.inflate(R.layout.layout_etudes, container, false);
-
-        FragmentManager fragmentManager = getChildFragmentManager();
-        CalendrierFragment calendrierFragment = (CalendrierFragment) fragmentManager.findFragmentById(R.id.calendrier_fragment);
-        return layout_etudes;
->>>>>>> Stashed changes
     }
 
 }
