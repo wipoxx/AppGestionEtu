@@ -11,13 +11,10 @@
         android:id="@+id/btnModif"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:id="@+id/btnModif" />
-=======
+        android:id="@+id/btnModif"
         android:gravity="center"
         android:onClick="afficherLayoutAjoutBudget"
         android:text="Modifier mon budget" />
->>>>>>> 718824c1ad809e89b86e3c177119a7e08c14d923
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -71,23 +68,17 @@
         android:id="@+id/btnDepense"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:id="@+id/btnDepense" />
-=======
+        android:id="@+id/btnDepense"
         android:onClick="afficherLayoutDepense"
         android:text="Dépenses" />
->>>>>>> 718824c1ad809e89b86e3c177119a7e08c14d923
 
     <Button
         android:id="@+id/btnRecette"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-<<<<<<< HEAD
-        android:id="@+id/btnRecette" />
-=======
+        android:id="@+id/btnRecette"
         android:onClick="afficherLayoutRecette"
         android:text="Recettes" />
->>>>>>> 718824c1ad809e89b86e3c177119a7e08c14d923
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -98,29 +89,17 @@
 
         <Button
             android:id="@+id/btnDettes"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
             android:id="@+id/btnEmp"
-            android:layout_weight = "1"/>
-=======
+            android:layout_weight = "1"
             android:layout_weight="1"
             android:onClick="afficherLayoutEmprunt"
             android:text="Emprunts" />
->>>>>>> 718824c1ad809e89b86e3c177119a7e08c14d923
-
         <Button
             android:id="@+id/Emprunt"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-<<<<<<< HEAD
-            android:id="@+id/btnDette"
-            android:layout_weight = "1"/>
-
-    </LinearLayout>
-
-    <TextView
-=======
             android:layout_weight="1"
             android:onClick="afficherLayoutDette"
             android:text="Dettes" />
@@ -136,7 +115,6 @@
         android:text="Afficher toutes les opérations" />
 
     <!--<ListView
->>>>>>> 718824c1ad809e89b86e3c177119a7e08c14d923
         android:id="@+id/listDep"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
