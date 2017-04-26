@@ -12,7 +12,6 @@
         android:text="Modifier mon budget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:onClick="afficherLayoutAjoutBudget"
         android:id="@+id/btnModif" />
 
     <LinearLayout
@@ -56,14 +55,12 @@
         android:text="Dépenses"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="afficherLayoutDepense"
         android:id="@+id/btnDepense" />
 
     <Button
         android:text="Recettes"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="afficherLayoutRecette"
         android:id="@+id/btnRecette" />
 
     <LinearLayout
@@ -77,33 +74,24 @@
             android:text="Emprunts"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/btnDettes"
-            android:onClick="afficherLayoutEmprunt"
+            android:id="@+id/btnEmp"
             android:layout_weight = "1"/>
 
         <Button
             android:text="Dettes"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/Emprunt"
-            android:onClick="afficherLayoutDette"
+            android:id="@+id/btnDette"
             android:layout_weight = "1"/>
 
     </LinearLayout>
 
-    <Button
-        android:text="Afficher toutes les opérations"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="afficherHistorique"
-        android:layout_gravity="center"
-        android:id="@+id/btnHistorique"/>
-
-    <!--<ListView
+    <TextView
         android:id="@+id/listDep"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="" /> -->
+        android:paddingBottom="20dp"
+        android:text="" />
 
 
 </LinearLayout>

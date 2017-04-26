@@ -8,10 +8,7 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by Fiolyne on 23/04/2017.
- */
-
+//**************** Classe non utilisée **************************//
 public class DAOBase {
     private static final int DATA_BASE_VERSION = 1;
     private static final String DATABASE_NAME = "BudgetBD";

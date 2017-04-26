@@ -2,6 +2,8 @@ package uqac.gestionvieetu.Budget;
 
 import java.util.Date;
 
+//**************** Classe non utilisée **************************//
+
 public class TableBudget {
     private int id;
     private float montant;

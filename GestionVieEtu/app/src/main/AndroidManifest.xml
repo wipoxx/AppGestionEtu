@@ -9,7 +9,6 @@
 
     <application
         android:allowBackup="true"
-        android:debuggable="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
@@ -29,6 +28,12 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
 
+        <activity android:name=".Budget.BudgetActivty"/>
+        <activity android:name=".Budget.AjoutBudgetActivity"/>
+        <activity android:name=".Budget.EmpruntActivity"/>
+        <activity android:name=".Budget.RecetteActivity"/>
+        <activity android:name=".Budget.DepenseActivity"/>
+        <activity android:name=".Budget.DetteActivity"/>
     </application>
 
 </manifest>

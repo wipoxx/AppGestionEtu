@@ -2,24 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="118f9886-af77-49bf-9be2-fa92406888cf" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/GestionVieEtu/.idea/inspectionProfiles/Project_Default.xml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/GestionVieEtu/.idea/inspectionProfiles/profiles_settings.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/AjoutBudgetFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/BudgetFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/DepenseFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/DetteFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/EmpruntFragment.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/RecetteFragment.java" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/.idea/gradle.xml" afterPath="$PROJECT_DIR$/GestionVieEtu/.idea/gradle.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/AjoutBudgetFragment.java" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/AjoutBudgetFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/BudgetFragment.java" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/BudgetFragment.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/AndroidManifest.xml" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/AndroidManifest.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/Budget.java" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/Budget.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/DAOBase.java" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/DAOBase.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/DataBase.java" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/DataBase.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/DepenseFragment.java" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/DepenseFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/DetteFragment.java" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/DetteFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/EmpruntFragment.java" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/EmpruntFragment.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/RecetteFragment.java" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/RecetteFragment.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/TableBudget.java" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/TableBudget.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/TableDepenseRecette.java" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/TableDepenseRecette.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/TableDetteEmprunt.java" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/Budget/TableDetteEmprunt.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/MainActivity.java" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/java/uqac/gestionvieetu/MainActivity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/res/layout/layout_ajout_budget.xml" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/res/layout/layout_ajout_budget.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/res/layout/activity_main.xml" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/res/layout/activity_main.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/res/layout/content_main.xml" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/res/layout/content_main.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/res/layout/layout_budget.xml" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/res/layout/layout_budget.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/res/layout/layout_depense.xml" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/res/layout/layout_depense.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/res/layout/layout_dette.xml" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/res/layout/layout_dette.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/res/layout/layout_emprunt.xml" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/res/layout/layout_emprunt.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/GestionVieEtu/app/src/main/res/layout/layout_recette.xml" afterPath="$PROJECT_DIR$/GestionVieEtu/app/src/main/res/layout/layout_recette.xml" />
     </list>
     <ignored path="AppGestionEtu.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -49,7 +54,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
-    <option name="width" value="1382" />
+    <option name="width" value="1370" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -77,20 +82,20 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
       <pane id="Scratches" />
       <pane id="AndroidView">
         <subPane />
       </pane>
       <pane id="ProjectPane" />
       <pane id="Scope" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="settings.editor.selected.configurable" value="android.sdk-updates" />
     <property name="settings.editor.splitter.proportion" value="0.2" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/GestionVieEtu" />
   </component>
   <component name="RunManager">
     <configuration default="true" type="Application" factoryName="Application">
@@ -195,7 +200,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <frame x="-8" y="-8" width="1370" height="744" extended-state="0" />
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />

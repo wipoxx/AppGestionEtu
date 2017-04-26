@@ -31,20 +31,13 @@
             android:layout_weight = "1"
             android:padding="20dp"/>
 
-        <TextView
-            android:text="Date"
-            android:layout_width="wrap_content"
+        <Spinner
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/lblDateEmprunt"
+            android:id="@+id/spinnerTypeEmp"
+            android:layout_weight = "1"
             android:padding="20dp"/>
 
-        <Button
-            android:text="Sélectionner une date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/btnDateEmp"
-            android:onClick="afficherDatePicker"
-            android:padding="20dp"/>
 
     </LinearLayout>
 
@@ -80,18 +73,11 @@
             android:padding="20dp"/>
     </LinearLayout>
 
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/spinnerTypeEmp"
-        android:padding="20dp"/>
-
     <Button
         android:text="Valider"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/btnValiderEmprunt"
-        android:onClick="afficherLayoutBudget"
         android:padding="20dp"/>
 
 </LinearLayout>
