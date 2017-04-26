@@ -3,11 +3,13 @@ package uqac.gestionvieetu.Sorties;
 import android.app.Fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CalendarView;
 
+import uqac.gestionvieetu.CalendrierFragment;
 import uqac.gestionvieetu.MainActivity;
 import uqac.gestionvieetu.R;
 
@@ -17,13 +19,14 @@ import uqac.gestionvieetu.R;
 
 public class SortiesFragment extends android.support.v4.app.Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View layout_sortie = inflater.inflate(R.layout.layout_sorties, container, false);
+<<<<<<< Updated upstream
+        return inflater.inflate(R.layout.layout_sorties, container, false);
+=======
+        View layout_sorties = inflater.inflate(R.layout.layout_sorties, container, false);
 
-        //Récupère le calendrier et le passe à l'activité
-        //CalendarView calendarView = (CalendarView) layout_sortie.findViewById(R.id.calendrier);
-        MainActivity mainActivity = (MainActivity) getActivity();
-        //mainActivity.setCalendrier(calendarView);
-
-        return layout_sortie;
+        FragmentManager fragmentManager = getChildFragmentManager();
+        CalendrierFragment calendrierFragment = (CalendrierFragment) fragmentManager.findFragmentById(R.id.calendrier_fragment_sortie);
+        return layout_sorties;
+>>>>>>> Stashed changes
     }
 }

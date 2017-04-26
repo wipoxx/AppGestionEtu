@@ -6,11 +6,11 @@
     android:weightSum="1"
     android:orientation="vertical">
 
-    <CalendarView
+    <fragment
         android:layout_width="match_parent"
-        android:layout_height="283dp"
-        android:id="@+id/calendarView"
-        android:layout_weight="0.08" />
+        android:layout_height="wrap_content"
+        android:id="@+id/calendrier_fragment_sortie"
+        android:name="uqac.gestionvieetu.CalendrierFragment"/>
 
     <ScrollView
         android:layout_width="match_parent"

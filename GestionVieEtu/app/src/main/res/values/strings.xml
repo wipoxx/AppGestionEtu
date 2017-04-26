@@ -58,4 +58,6 @@
     <string name="tvDateDebutSettings">Début</string>
     <string name="tvDateTrimestreSettings">Dates du trimestre :</string>
 
+    <string name="nomFichierMatieres">matieres_settings</string>
+
 </resources>

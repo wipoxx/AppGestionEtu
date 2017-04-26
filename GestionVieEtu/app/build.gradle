@@ -40,8 +40,4 @@ dependencies {
     //Tests
     testCompile "org.mockito:mockito-core:+"
     androidTestCompile "org.mockito:mockito-android:+"
-<<<<<<< HEAD
-
-=======
->>>>>>> 8633b20727092b2af242ffd494e7741fff9a2a1a
 }

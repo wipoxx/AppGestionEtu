@@ -7,6 +7,10 @@ import android.net.Uri;
 import android.provider.CalendarContract;
 import android.util.Log;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -56,8 +60,13 @@ public class CalendarContentResolver {
         return calendars;
     }
 
-    public Set<Evenement> getEvents(String calendarId) {
-        String selection = CalendarContract.Events.CALENDAR_ID +"="+ calendarId;
+    public Set<Evenement> getEvents(String calendarId) throws ParseException {
+        String str_date="01-01-2017";   //on ne récupère que les événements d'après 2017
+        DateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
+        Date date = formatter.parse(str_date);
+
+        String selection = CalendarContract.Events.DTSTART +">"+ date.getTime();
+        //Log.d("DATE-TIMESTAMP", date.getTime()+ "");
         Cursor cursor = contentResolver.query(EVENT_URI, FIELDS_EVENT, selection, null, null);
         Evenement event;
         try {
