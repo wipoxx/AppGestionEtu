@@ -1,4 +1,4 @@
-package uqac.gestionvieetu;
+package uqac.gestionvieetu.Budget;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

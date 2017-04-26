@@ -14,10 +14,14 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
+
+import org.w3c.dom.Comment;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -31,17 +35,17 @@ import uqac.gestionvieetu.Etudes.EtudesFragment;
 import uqac.gestionvieetu.Etudes.RootEtudesFragment;
 import uqac.gestionvieetu.Sorties.AjoutSortieFragment;
 import uqac.gestionvieetu.Sorties.SortiesFragment;
-import uqac.gestionvieetu.AjoutBudgetFragment;
-import uqac.gestionvieetu.BudgetFragment;
-import uqac.gestionvieetu.DAOBase;
-import uqac.gestionvieetu.DataBase;
-import uqac.gestionvieetu.DepenseFragment;
-import uqac.gestionvieetu.DetteFragment;
-import uqac.gestionvieetu.EmpruntFragment;
-import uqac.gestionvieetu.RecetteFragment;
-import uqac.gestionvieetu.TableBudget;
-import uqac.gestionvieetu.TableDepenseRecette;
-import uqac.gestionvieetu.TableDetteEmprunt;
+import uqac.gestionvieetu.Budget.AjoutBudgetFragment;
+import uqac.gestionvieetu.Budget.BudgetFragment;
+import uqac.gestionvieetu.Budget.DAOBase;
+import uqac.gestionvieetu.Budget.DataBase;
+import uqac.gestionvieetu.Budget.DepenseFragment;
+import uqac.gestionvieetu.Budget.DetteFragment;
+import uqac.gestionvieetu.Budget.EmpruntFragment;
+import uqac.gestionvieetu.Budget.RecetteFragment;
+import uqac.gestionvieetu.Budget.TableBudget;
+import uqac.gestionvieetu.Budget.TableDepenseRecette;
+import uqac.gestionvieetu.Budget.TableDetteEmprunt;
 
 
 
@@ -119,10 +123,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void afficherLayoutAjoutBudget(View view){ this.changerLayout(new AjoutBudgetFragment()); }
 
-    public void afficherLayoutDepense(View view) {
-        this.changerLayout(new DepenseFragment());
-        DAOBase db = new DAOBase(this);
-        db.open();
+    public void afficherLayoutDepense(View view) { this.changerLayout(new DepenseFragment());
     }
 
     public void afficherLayoutRecette(View view) {
@@ -371,7 +372,44 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    /*public void afficherHistoque (View view) {
+            @SuppressWarnings("unchecked")
+            ArrayAdapter<TableDepenseRecette> adapter = (ArrayAdapter<TableDepenseRecette>) getListAdapter();
+            TableDepenseRecette dr = null;
+            switch (view.getId()) {
+                case R.id.btnDepense:
+                    String[] dep = new String[] { "Cool", "Very nice", "Hate it" };
+                    int nextInt = new Random().nextInt(3);
+                    // enregistrer le nouveau commentaire dans la base de données
+                    comment = datasource.createComment(comments[nextInt]);
+                    adapter.add(comment);
+                    break;
+                case R.id.delete:
+                    if (getListAdapter().getCount() > 0) {
+                        comment = (Comment) getListAdapter().getItem(0);
+                        datasource.deleteComment(comment);
+                        adapter.remove(comment);
+                    }
+                    break;
+            }
+            adapter.notifyDataSetChanged();
+        } */
 
+
+    /*public void modifierBudget(View view){
+        EditText et = (EditText)findViewById(R.id.lblAjoutBudget);
+        String b = et.getText().toString();
+        float a = Float.parseFloat(b);
+        DAOBase db = new DAOBase(this);
+        db.open();
+
+        /*TableBudget tb = new TableBudget(a, a, "decembre", "2010");
+        db.ajouterBudget(tb);
+
+        db.close();
+
+        afficherLayoutBudget(view);
+    }*/
 }
 
 

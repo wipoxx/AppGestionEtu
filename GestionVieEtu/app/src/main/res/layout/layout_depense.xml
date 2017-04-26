@@ -72,10 +72,10 @@ android:padding="@dimen/activity_vertical_margin">
 
 </LinearLayout>
 
-    <ListView
+    <!--<ListView
         android:id="@+id/listDep"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/hello" />
+        android:text="" /> -->
 
 </LinearLayout>

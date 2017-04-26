@@ -1,4 +1,4 @@
-package uqac.gestionvieetu;
+package uqac.gestionvieetu.Budget;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+
+import uqac.gestionvieetu.R;
 
 /**
  * Created by Fiolyne on 24/04/2017.
