@@ -12,7 +12,6 @@ import android.widget.LinearLayout;
 
 import com.google.android.gms.maps.MapFragment;
 
-import uqac.gestionvieetu.R;
 
 public class AffichageMapFragment extends FragmentActivity {
     /*public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

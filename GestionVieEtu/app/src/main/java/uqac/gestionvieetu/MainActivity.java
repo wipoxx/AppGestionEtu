@@ -28,12 +28,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
-import uqac.gestionvieetu.Budget.AjoutBudgetFragment;
-import uqac.gestionvieetu.Budget.BudgetFragment;
-import uqac.gestionvieetu.Budget.DepenseFragment;
-import uqac.gestionvieetu.Budget.DetteFragment;
-import uqac.gestionvieetu.Budget.EmpruntFragment;
-import uqac.gestionvieetu.Budget.RecetteFragment;
+
 import uqac.gestionvieetu.Etudes.AjoutHoraireFragment;
 import uqac.gestionvieetu.Etudes.AjoutTacheFragment;
 import uqac.gestionvieetu.Etudes.EdtFragment;
@@ -121,29 +116,8 @@ public class MainActivity extends AppCompatActivity{
         this.changerLayout(new SortiesFragment());
     }
     //Lors d'un clic sur le bouton Budget dans la première fenêtre
-    public void afficherLayoutBudget(View view) {
-        this.changerLayout(new BudgetFragment());
-    }
 
-    public void afficherLayoutAjoutBudget(View view) {
-        this.changerLayout(new AjoutBudgetFragment());
-    }
 
-    public void afficherLayoutDepense(View view) {
-        this.changerLayout(new DepenseFragment());
-    }
-
-    public void afficherLayoutRecette(View view) {
-        this.changerLayout(new RecetteFragment());
-    }
-
-    public void afficherLayoutEmprunt(View view) {
-        this.changerLayout(new EmpruntFragment());
-    }
-
-    public void afficherLayoutDette(View view) {
-        this.changerLayout(new DetteFragment());
-    }
     //Lors d'un clic sur le bouton Ajouter horaire ; affiche layout Ajout horaire
     public void afficherAjoutHoraire(View view) {
         this.changerLayout(new AjoutHoraireFragment());

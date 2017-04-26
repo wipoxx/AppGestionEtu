@@ -38,7 +38,6 @@ public class CalendrierFragment extends CaldroidFragment {
                 }
                 //Met son background en orange
                 view.setBackgroundColor(getResources().getColor(R.color.colorAccent, activity.getTheme()));
-
                 //Ajoute la date à l'activité pour la passer aux fragment d'ajout d'événement
                 SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/YYYY");
                 activity.setDateSelectionnee(simpleDateFormat.format(date));

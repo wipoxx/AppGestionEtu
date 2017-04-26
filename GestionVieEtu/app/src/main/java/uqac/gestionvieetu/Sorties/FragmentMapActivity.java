@@ -37,7 +37,6 @@ import java.util.List;
 import java.util.Random;
 
 import uqac.gestionvieetu.R;
-
 /**
  * Created by guill on 23/04/2017.
  */
