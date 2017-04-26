@@ -14,10 +14,6 @@ import com.google.android.gms.maps.MapFragment;
 
 import uqac.gestionvieetu.R;
 
-/**
- * Created by guill on 23/04/2017.
- */
-
 public class AffichageMapFragment extends FragmentActivity {
     /*public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         LinearLayout layout_map = (LinearLayout) inflater.inflate(R.layout.layout_carte, container, false);

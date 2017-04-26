@@ -18,12 +18,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -39,6 +41,7 @@ import uqac.gestionvieetu.Etudes.AjoutTacheFragment;
 import uqac.gestionvieetu.Etudes.EdtFragment;
 import uqac.gestionvieetu.Etudes.EtudesFragment;
 import uqac.gestionvieetu.Etudes.RootEtudesFragment;
+import uqac.gestionvieetu.Sorties.AffichageMapFragment;
 import uqac.gestionvieetu.Sorties.AjoutSortieFragment;
 import uqac.gestionvieetu.Sorties.FragmentMapActivity;
 import uqac.gestionvieetu.Sorties.SortiesFragment;
@@ -175,10 +178,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         Fragment currentFragment = this.getSupportFragmentManager().findFragmentById(R.id.main_fragment);
-
         if (currentFragment instanceof AjoutHoraireFragment || currentFragment instanceof AjoutTacheFragment) {
             this.changerLayout(new EtudesFragment());
             this.changerLayout(new EdtFragment(), R.id.sous_etudes_fragment);
+        } else if (currentFragment instanceof AjoutSortieFragment || currentFragment instanceof FragmentMapActivity) {
+            this.changerLayout(new SortiesFragment());
         } else if (currentFragment instanceof EtudesFragment) {
             Fragment currentFragment2 = this.getSupportFragmentManager().findFragmentById(R.id.sous_etudes_fragment);
             if (currentFragment2 instanceof EdtFragment) {
@@ -186,6 +190,8 @@ public class MainActivity extends AppCompatActivity {
             } else {
                 this.changerLayout(new MainFragment());
             }
+        } else if (currentFragment instanceof SortiesFragment) {
+            this.changerLayout(new MainFragment());
         } else {
             super.onBackPressed();
         }
