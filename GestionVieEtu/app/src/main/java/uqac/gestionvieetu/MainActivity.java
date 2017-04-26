@@ -6,7 +6,6 @@ import android.icu.util.GregorianCalendar;
 import android.os.Build;
 import android.os.Bundle;
 import android.provider.CalendarContract;
-import android.support.annotation.Nullable;
 import android.support.annotation.RequiresApi;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
@@ -19,13 +18,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
-
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -36,15 +28,21 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.concurrent.TimeUnit;
 
+import uqac.gestionvieetu.Budget.AjoutBudgetFragment;
+import uqac.gestionvieetu.Budget.BudgetFragment;
+import uqac.gestionvieetu.Budget.DepenseFragment;
+import uqac.gestionvieetu.Budget.DetteFragment;
+import uqac.gestionvieetu.Budget.EmpruntFragment;
+import uqac.gestionvieetu.Budget.RecetteFragment;
 import uqac.gestionvieetu.Etudes.AjoutHoraireFragment;
 import uqac.gestionvieetu.Etudes.AjoutTacheFragment;
 import uqac.gestionvieetu.Etudes.EdtFragment;
 import uqac.gestionvieetu.Etudes.EtudesFragment;
 import uqac.gestionvieetu.Etudes.RootEtudesFragment;
-import uqac.gestionvieetu.Sorties.AffichageMapFragment;
 import uqac.gestionvieetu.Sorties.AjoutSortieFragment;
 import uqac.gestionvieetu.Sorties.FragmentMapActivity;
 import uqac.gestionvieetu.Sorties.SortiesFragment;
+
 
 public class MainActivity extends AppCompatActivity {
     private static HashMap<String, Boolean> lJoursSelectionnes;
@@ -115,6 +113,26 @@ public class MainActivity extends AppCompatActivity {
     //Lors d'un clic sur le bouton Budget dans la première fenêtre
     public void afficherLayoutBudget(View view) {
         this.changerLayout(new BudgetFragment());
+    }
+
+    public void afficherLayoutAjoutBudget(View view) {
+        this.changerLayout(new AjoutBudgetFragment());
+    }
+
+    public void afficherLayoutDepense(View view) {
+        this.changerLayout(new DepenseFragment());
+    }
+
+    public void afficherLayoutRecette(View view) {
+        this.changerLayout(new RecetteFragment());
+    }
+
+    public void afficherLayoutEmprunt(View view) {
+        this.changerLayout(new EmpruntFragment());
+    }
+
+    public void afficherLayoutDette(View view) {
+        this.changerLayout(new DetteFragment());
     }
 
     //Lors d'un clic sur le bouton Ajouter horaire ; affiche layout Ajout horaire
@@ -203,13 +221,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void setDateSelectionnee(String dateSelectionnee) {
         this.dateSelectionnee = dateSelectionnee;
-        Fragment currentFragment = this.getSupportFragmentManager().findFragmentById(R.id.main_fragment);
+        ((Button) bDate).setText(dateSelectionnee);
 
-        if (currentFragment instanceof AjoutHoraireFragment) {
-            ((AjoutHoraireFragment) currentFragment).setDate(dateSelectionnee, bDate);
-        } else if (currentFragment instanceof AjoutTacheFragment) {
-            ((AjoutTacheFragment) currentFragment).setDate(dateSelectionnee, bDate);
-        }
     }
 
 
@@ -359,6 +372,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
     //Récupérer les matières sauvegardées dans un fichier depuis les Settings
     public ArrayList<String> getMatieres() {
         ArrayList<String> lMatieres = new ArrayList<>();
@@ -380,6 +394,45 @@ public class MainActivity extends AppCompatActivity {
         }
         return lMatieres;
     }
+
+    /*public void afficherHistoque (View view) {
+            @SuppressWarnings("unchecked")
+            ArrayAdapter<TableDepenseRecette> adapter = (ArrayAdapter<TableDepenseRecette>) getListAdapter();
+            TableDepenseRecette dr = null;
+            switch (view.getId()) {
+                case R.id.btnDepense:
+                    String[] dep = new String[] { "Cool", "Very nice", "Hate it" };
+                    int nextInt = new Random().nextInt(3);
+                    // enregistrer le nouveau commentaire dans la base de données
+                    comment = datasource.createComment(comments[nextInt]);
+                    adapter.add(comment);
+                    break;
+                case R.id.delete:
+                    if (getListAdapter().getCount() > 0) {
+                        comment = (Comment) getListAdapter().getItem(0);
+                        datasource.deleteComment(comment);
+                        adapter.remove(comment);
+                    }
+                    break;
+            }
+            adapter.notifyDataSetChanged();
+        } */
+
+
+    /*public void modifierBudget(View view){
+        EditText et = (EditText)findViewById(R.id.lblAjoutBudget);
+        String b = et.getText().toString();
+        float a = Float.parseFloat(b);
+        DAOBase db = new DAOBase(this);
+        db.open();
+
+        /*TableBudget tb = new TableBudget(a, a, "decembre", "2010");
+        db.ajouterBudget(tb);
+
+        db.close();
+
+        afficherLayoutBudget(view);
+    }*/
 }
 
 

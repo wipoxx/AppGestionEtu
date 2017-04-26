@@ -1,4 +1,4 @@
-package uqac.gestionvieetu;
+package uqac.gestionvieetu.Budget;
 
 import java.util.Date;
 
@@ -29,7 +29,7 @@ public class TableDetteEmprunt {
     public void setId(int id){this.id = id;}
     public void setNom(String nom){this.nom = nom;}
     public void setPrenom(String prenom){this.prenom = prenom;}
-    public void setDette(boolean prenom){this.dette = dette;}
+    public void setDette(boolean dette){this.dette = dette;}
 
     public float getMontant(){return montant;}
     public String getType(){return type;}
