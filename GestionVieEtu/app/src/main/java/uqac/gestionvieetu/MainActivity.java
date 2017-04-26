@@ -42,11 +42,7 @@ import uqac.gestionvieetu.Etudes.RootEtudesFragment;
 import uqac.gestionvieetu.Sorties.AjoutSortieFragment;
 import uqac.gestionvieetu.Sorties.FragmentMapActivity;
 import uqac.gestionvieetu.Sorties.SortiesFragment;
-<<<<<<< HEAD
 import uqac.gestionvieetu.Budget.BudgetActivty;
-
-=======
->>>>>>> 718824c1ad809e89b86e3c177119a7e08c14d923
 
 
 public class MainActivity extends AppCompatActivity{
@@ -124,9 +120,6 @@ public class MainActivity extends AppCompatActivity{
     public void afficherLayoutSorties(View view) {
         this.changerLayout(new SortiesFragment());
     }
-
-<<<<<<< HEAD
-=======
     //Lors d'un clic sur le bouton Budget dans la première fenêtre
     public void afficherLayoutBudget(View view) {
         this.changerLayout(new BudgetFragment());
@@ -151,8 +144,6 @@ public class MainActivity extends AppCompatActivity{
     public void afficherLayoutDette(View view) {
         this.changerLayout(new DetteFragment());
     }
->>>>>>> 718824c1ad809e89b86e3c177119a7e08c14d923
-
     //Lors d'un clic sur le bouton Ajouter horaire ; affiche layout Ajout horaire
     public void afficherAjoutHoraire(View view) {
         this.changerLayout(new AjoutHoraireFragment());
@@ -389,10 +380,7 @@ public class MainActivity extends AppCompatActivity{
 
         }
     }
-<<<<<<< HEAD
-=======
-
-
+    
     //Récupérer les matières sauvegardées dans un fichier depuis les Settings
     public ArrayList<String> getMatieres() {
         ArrayList<String> lMatieres = new ArrayList<>();
@@ -453,7 +441,6 @@ public class MainActivity extends AppCompatActivity{
 
         afficherLayoutBudget(view);
     }*/
->>>>>>> 718824c1ad809e89b86e3c177119a7e08c14d923
 }
 
 
