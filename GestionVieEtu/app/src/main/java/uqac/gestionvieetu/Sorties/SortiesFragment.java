@@ -19,14 +19,6 @@ import uqac.gestionvieetu.R;
 
 public class SortiesFragment extends android.support.v4.app.Fragment{
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-<<<<<<< Updated upstream
         return inflater.inflate(R.layout.layout_sorties, container, false);
-=======
-        View layout_sorties = inflater.inflate(R.layout.layout_sorties, container, false);
-
-        FragmentManager fragmentManager = getChildFragmentManager();
-        CalendrierFragment calendrierFragment = (CalendrierFragment) fragmentManager.findFragmentById(R.id.calendrier_fragment_sortie);
-        return layout_sorties;
->>>>>>> Stashed changes
     }
 }
